@@ -8,19 +8,26 @@ var authTypes = ['github', 'twitter', 'facebook', 'google'];
 var UserSchema = new Schema({
   name: String,
   email: { type: String, lowercase: true },
+  nickname: String,
   role: {
     type: String,
     default: 'user'
   },
+  cordura: Number,
+  code: String,
   hashedPassword: String,
   provider: String,
   salt: String,
   facebook: {},
   twitter: {},
   google: {},
-  github: {}
+  github: {},
+  trials: [{
+    trial: {type: mongoose.Schema.Types.ObjectId, ref: 'Trials'},
+    status: String,
+    date: Date
+  }]
 });
-
 /**
  * Virtuals
  */
