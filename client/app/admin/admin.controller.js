@@ -14,4 +14,51 @@ angular.module('puebloMalditoWebappApp')
         }
       });
     };
+
+    $scope.user = {};
+    $scope.errors = {};
+
+    $scope.register = function(form) {
+      $scope.submitted = true;
+
+      if(form.$valid) {
+
+        var user = {
+          name: $scope.user.name,
+          email: $scope.user.email,
+          password: $scope.user.password
+        };
+        /*Auth.createUser({
+          name: $scope.user.name,
+          email: $scope.user.email,
+          password: $scope.user.password
+        })*/
+        User.save(user,
+          function(data) {
+            //$cookieStore.put('token', data.token);
+            //currentUser = User.get();
+            //return cb(user);
+            // Account created, redirect to home
+            $scope.users = User.query();
+            //$scope.user.name,
+            //$scope.user.email,
+            //$scope.user.password
+            $scope.user = {};
+            form.$setPristine();
+            form.$setUntouched();
+            $scope.submitted = false;
+          },
+          function(err) {
+            err = err.data;
+            $scope.errors = {};
+
+            // Update validity of form fields that match the mongoose errors
+            angular.forEach(err.errors, function(error, field) {
+              form[field].$setValidity('mongoose', false);
+              $scope.errors[field] = error.message;
+            });
+        });
+      }
+    };
+
   });

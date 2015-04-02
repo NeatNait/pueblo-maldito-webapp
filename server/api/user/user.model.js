@@ -13,8 +13,6 @@ var UserSchema = new Schema({
     type: String,
     default: 'user'
   },
-  cordura: Number,
-  code: String,
   hashedPassword: String,
   provider: String,
   salt: String,
@@ -22,6 +20,18 @@ var UserSchema = new Schema({
   twitter: {},
   google: {},
   github: {},
+  /* user extension */
+  created: {
+    type: Date,
+    default: Date.now
+  },
+  code: String,
+  stats: {
+    sanity: {
+      type: Number,
+      default: 100
+    }
+  },
   trials: [{
     trial: {type: mongoose.Schema.Types.ObjectId, ref: 'Trials'},
     status: String,

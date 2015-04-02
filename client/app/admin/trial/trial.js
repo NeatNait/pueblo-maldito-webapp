@@ -4,8 +4,8 @@ angular.module('puebloMalditoWebappApp')
   .config(function ($stateProvider) {
     $stateProvider
       .state('trials', {
-        url: '/trials',
-        templateUrl: 'app/trials/trials.html',
-        controller: 'TrialsCtrl'
+        url: '/admin/trials',
+        templateUrl: 'app/admin/trial/trial.html',
+        controller: 'TrialCtrl'
       });
   });
