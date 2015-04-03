@@ -4,6 +4,7 @@ var User = require('./user.model');
 var passport = require('passport');
 var config = require('../../config/environment');
 var jwt = require('jsonwebtoken');
+var _ = require('lodash');
 
 var validationError = function(res, err) {
   return res.json(422, err);
@@ -99,3 +100,39 @@ exports.me = function(req, res, next) {
 exports.authCallback = function(req, res, next) {
   res.redirect('/');
 };
+
+
+/**
+ * Add a trial to a user
+ */
+exports.addTrial = function(req, res, next) {
+
+  User.findOne({code : req.params.code}, function (err, user) {
+    if(user) {
+
+      var trial = _.find(user.trials, function(trialPassed){
+        return trialPassed.trial == req.body.trialId;
+      });
+
+      if(!trial){
+        user.trials.push({
+          trial: req.body.trialId,
+          status: 'pasada',
+          date: Date.now()
+        });
+        user.save(function(err) {
+          if (err) return validationError(res, err);
+          res.send(200);
+        });
+      }
+      else{
+        res.send(200);
+      }
+
+    } else {
+      res.send(404);
+    }
+  });
+
+};
+

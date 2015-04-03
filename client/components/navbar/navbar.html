@@ -15,7 +15,8 @@
             <a ng-href="{{item.link}}">{{item.title}}</a>
         </li>
         <li ng-show="isAdmin()" ng-class="{active: isActive('/admin')}"><a href="/admin">Admin</a></li>
-        <li ng-show="isAdmin()" ng-class="{active: isActive('/admin/trials')}"><a href="/admin/trials">Trials</a></li>
+        <li ng-show="isAdmin()" ng-class="{active: isActive('/admin/trials')}"><a ui-sref="admin-trials">Trials</a></li>
+        <li ng-show="isAdmin()" ng-class="{active: isActive('/trials')}"><a ui-sref="trials.list">Trials</a></li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">

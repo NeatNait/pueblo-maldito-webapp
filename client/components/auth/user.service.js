@@ -12,6 +12,12 @@ angular.module('puebloMalditoWebappApp')
           controller:'password'
         }
       },
+      addTrial: {
+        method: 'PUT',
+        params: {
+          controller:'trial'
+        }
+      },
       get: {
         method: 'GET',
         params: {

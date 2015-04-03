@@ -46,16 +46,5 @@
     </p>
   </form>
   <hr>
-</div>
-
-<div class="container">
-  <ul class="list-group">
-    <li class="list-group-item" ng-repeat="trial in trials | orderBy: 'name' ">
-        <strong>{{trial.name}}</strong><br>
-        <span class="text-muted">{{trial.info || '&nbsp'}}</span>
-
-        <a ng-click="delete(trial)" class="trash"><span class="glyphicon glyphicon-trash pull-right"></span></a>
-                <div class="text-muted">{{trial.stats.sanity}}</div>
-    </li>
-  </ul>
+  <trial-list allow-delete="true" trials="trials"></trial-list>
 </div>

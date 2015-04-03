@@ -33,7 +33,7 @@ var UserSchema = new Schema({
     }
   },
   trials: [{
-    trial: {type: mongoose.Schema.Types.ObjectId, ref: 'Trials'},
+    trial: {type: mongoose.Schema.Types.ObjectId, ref: 'Trial'},
     status: String,
     date: Date
   }]

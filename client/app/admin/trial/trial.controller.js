@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('puebloMalditoWebappApp')
-  .controller('TrialCtrl', function ($scope, Trial) {
+  .controller('AdminTrialCtrl', function ($scope, Trial) {
 
     $scope.trials = Trial.query();
     $scope.newTrial = new Trial();

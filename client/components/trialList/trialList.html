@@ -1,0 +1,8 @@
+<ul class="list-group">
+  <li class="list-group-item" ng-repeat="trial in trials | orderBy: 'name' ">
+      <a ui-sref="trials.detail({trialId: trial._id})"><strong>{{trial.name}}</strong><br></a>
+      <span class="text-muted">{{trial.info || '&nbsp'}}</span>
+      <a ng-click="delete(trial)" class="trash" ng-show="{{allowDelete}}"><span class="glyphicon glyphicon-trash pull-right"></span></a>
+      <div class="text-muted">{{trial.stats.sanity}}</div>
+  </li>
+</ul>
