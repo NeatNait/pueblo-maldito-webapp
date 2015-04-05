@@ -8,6 +8,7 @@ angular.module('puebloMalditoWebappApp')
         abstract: 'true',
         templateUrl: 'app/trials/trials.html',
         controller: 'TrialsCtrl',
+        authenticate: true,
         resolve: {
           trials: function(Trial){
             return Trial.query();
@@ -16,12 +17,14 @@ angular.module('puebloMalditoWebappApp')
       })
       .state('trials.list', {
         url: '',
-        templateUrl: 'app/trials/trials.list.html'
+        templateUrl: 'app/trials/trials.list.html',
+        authenticate: true
       })
       .state('trials.detail', {
         url: '/:trialId',
         templateUrl: 'app/trials/trials.detail.html',
-        controller: 'TrialsDetailCtrl'
+        controller: 'TrialsDetailCtrl',
+        authenticate: true
       })
 
       ;
