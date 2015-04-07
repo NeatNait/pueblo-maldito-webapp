@@ -1,10 +1,12 @@
 'use strict';
 
 var User = require('./user.model');
+var Trial = require('../trial/trial.model');
 var passport = require('passport');
 var config = require('../../config/environment');
 var jwt = require('jsonwebtoken');
 var _ = require('lodash');
+
 
 var validationError = function(res, err) {
   return res.json(422, err);
@@ -115,14 +117,25 @@ exports.addTrial = function(req, res, next) {
       });
 
       if(!trial){
-        user.trials.push({
-          trial: req.body.trialId,
-          status: 'pasada',
-          date: Date.now()
-        });
-        user.save(function(err) {
-          if (err) return validationError(res, err);
-          res.send(200);
+        Trial.findById(req.body.trialId, function (err, trialObj){
+
+          if(trialObj){
+            console.log(trialObj);
+            user.trials.push({
+              trial: req.body.trialId,
+              status: 'pasada',
+              date: Date.now()
+            });
+
+            user.stats.sanity = user.stats.sanity - trialObj.stats.sanity;
+            user.save(function(err) {
+              if (err) return validationError(res, err);
+              res.send(200);
+            });
+          }
+          else{
+            res.send(500, err);
+          }
         });
       }
       else{
