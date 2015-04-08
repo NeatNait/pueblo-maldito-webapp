@@ -6,7 +6,11 @@
 'use strict';
 
 var Thing = require('../api/thing/thing.model');
+var Trial = require('../api/trial/trial.model');
+var Event = require('../api/event/event.model');
 var User = require('../api/user/user.model');
+var faker = require('faker');
+faker.locale = 'es';
 
 Thing.find({}).remove(function() {
   Thing.create({
@@ -31,46 +35,118 @@ Thing.find({}).remove(function() {
 });
 
 User.find({}).remove(function() {
-  User.create({
+
+  console.time('populateUsers');
+  console.log('populating users...');
+
+  var numUsers = 400,
+      users = [];
+
+  for (var i = 0; i < numUsers; i++) {
+    users.push({
+      provider: 'local',
+      name: faker.name.findName(),
+      email: 'user'+i+'@test.com',
+      password: 'test',
+      code: i
+    });
+  }
+
+  users.push({
     provider: 'local',
-    name: 'Test User',
-    email: 'test@test.com',
-    password: 'test',
-    code: 1
-  }, {
+    role: 'admin',
+    name: 'Admin 1',
+    email: '1@1.com',
+    password: '1',
+    code: 990
+  });
+
+  users.push({
     provider: 'local',
-    name: 'Rita',
-    email: 'test1@test.com',
-    password: 'test',
-    code: 2
-  }, {
-    provider: 'local',
-    name: 'Manuel',
-    email: 'test2@test.com',
-    password: 'test',
-    code: 3
-  }, {
-    provider: 'local',
-    name: 'Juan',
-    email: 'test3@test.com',
-    password: 'test',
-    code: 4
-  }, {
+    role: 'admin',
+    name: 'Admin a',
+    email: 'a@a.a',
+    password: '1',
+    code: 995
+  });
+
+  users.push({
     provider: 'local',
     role: 'admin',
     name: 'Admin',
     email: 'admin@admin.com',
     password: 'admin',
-    code: 5
-  }, {
-    provider: 'local',
-    role: 'admin',
-    name: 'Admin',
-    email: '1@1.com',
-    password: '1',
-    code: 6
-  }, function() {
-      console.log('finished populating users');
+    code: 999
+  });
+
+  User.create(users, function(err, docs) {
+    if(err){
+      console.log(err);
     }
-  );
+    console.log('finished populating users');
+    console.timeEnd('populateUsers');
+  });
+
 });
+
+Event.find({}).remove(function() {
+
+  console.time('populateEvents');
+  console.log('populating events...');
+
+  Event.create({
+    name: faker.lorem.sentence(),
+    info: faker.lorem.paragraph(),
+    active: true,
+    startDate: Date.now(),
+    finishDate: faker.date.future(),
+    type: faker.lorem.words()[0]
+  }, function(err, event) {
+
+    console.log('finished populating events');
+    console.timeEnd('populateEvents');
+
+    if(err){
+      console.log(err);
+      return;
+    }
+    createTrials(event);
+  });
+
+});
+
+function createTrials(event){
+  Trial.find({}).remove(function() {
+
+    console.time('populateTrials');
+    console.log('populating trials...');
+
+    var numtrials = 30,
+        trials = [];
+
+    for (var i = 0; i < numtrials; i++) {
+      trials.push({
+        //name: faker.lorem.sentence(),
+        name: faker.hacker.verb() + ' ' + faker.hacker.noun(),
+        info: faker.hacker.phrase(),
+        //info: faker.lorem.paragraph(),
+        active: true,
+        stats: {
+          sanity: faker.random.number({min:-5, max:10})
+        },
+        event: event
+      });
+    }
+
+    Trial.create(trials, function(err, docs) {
+      if(err){
+        console.log(err);
+        return;
+      }
+      console.log('finished populating trials');
+      console.timeEnd('populateTrials');
+    });
+
+  });
+}
+

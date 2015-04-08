@@ -29,6 +29,7 @@
     "socketio-jwt": "^2.0.2"
   },
   "devDependencies": {
+    "faker": "^2.1.2",
     "grunt": "~0.4.4",
     "grunt-autoprefixer": "~0.7.2",
     "grunt-wiredep": "~1.8.0",
