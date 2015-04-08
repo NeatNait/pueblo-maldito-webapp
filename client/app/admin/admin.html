@@ -69,10 +69,21 @@
 
 <div class="container">
   <p>The delete user and user index api routes are restricted to users with the 'admin' role.</p>
+
+  <div class="input-group">
+    <input type="text" class="form-control" placeholder="Search for..." ng-model="searchText">
+    <span class="input-group-btn">
+      <button class="btn btn-default" type="button">Search!</button>
+    </span>
+  </div>
+
+  <br>
+
   <ul class="list-group">
-    <li class="list-group-item" ng-repeat="user in users">
-        <strong>{{user.name}}</strong><br>
-        <span class="text-muted">{{user.email}}</span>
+    <li class="list-group-item" ng-repeat="user in users | orderBy: 'name' | filter:searchText | filter:{name:'!Admin'} ">
+        <strong>{{user.name}}</strong> <span class="text-muted">#{{user.code}}</span><br>
+        <span class="text-muted">{{user.email}}</span><br>
+        {{user.stats.sanity}}
         <a ng-click="delete(user)" class="trash"><span class="glyphicon glyphicon-trash pull-right"></span></a>
     </li>
   </ul>

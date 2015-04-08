@@ -1,5 +1,14 @@
+<div class="input-group">
+  <input type="text" class="form-control" placeholder="Search for..." ng-model="searchTrial">
+  <span class="input-group-btn">
+    <button class="btn btn-default" type="button">Search!</button>
+  </span>
+</div>
+
+<br>
+
 <ul class="list-group">
-  <li class="list-group-item" ng-repeat="trial in trials | orderBy: 'name' ">
+  <li class="list-group-item" ng-repeat="trial in trials | orderBy: 'name' | filter:searchTrial ">
       <a ui-sref="trials.detail({trialId: trial._id})"><strong>{{trial.name}}</strong><br></a>
       <span class="text-muted">{{trial.info || '&nbsp'}}</span>
       <a ng-click="delete(trial)" class="trash" ng-show="{{allowDelete}}"><span class="glyphicon glyphicon-trash pull-right"></span></a>
