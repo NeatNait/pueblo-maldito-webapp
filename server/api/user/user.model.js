@@ -84,6 +84,7 @@ UserSchema
     return email.length;
   }, 'Email cannot be blank');
 
+//TODO : set random password for new user by admin
 // Validate empty password
 UserSchema
   .path('hashedPassword')
