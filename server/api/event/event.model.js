@@ -4,7 +4,7 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 var EventSchema = new Schema({
-   name: String,
+  name: String,
   info: String, //Description of the event
   active: Boolean,
   startDate: Date,
