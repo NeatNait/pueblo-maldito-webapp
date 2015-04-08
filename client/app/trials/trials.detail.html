@@ -9,16 +9,20 @@
     <!-- NAME -->
     <div class="form-group" ng-class="{ 'has-success': form.name.$valid && submitted,
                                           'has-error': form.name.$invalid && submitted }">
-    <label>Code</label>
+      <label>Code</label>
 
-    <input type="text" name="code" class="form-control" ng-model="code" required/>
-    <p class="help-block" ng-show="form.code.$error.required && submitted">
-      A code is required
-    </p>
+      <div class="input-group">
+        <input type="text" name="code" class="form-control" ng-model="code" required/>
+        <span class="input-group-btn">
+          <button type="submit" class="btn btn-primary">Scan Code</button>
+        </span>
+      </div>
+
+      <p class="help-block" ng-show="form.code.$error.required && submitted">
+        A code is required
+      </p>
+
     </div>
 
-    <span class="input-group-btn">
-      <button type="submit" class="btn btn-primary">Add</button>
-    </span>
   </p>
 </form>
