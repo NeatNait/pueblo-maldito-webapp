@@ -2,3 +2,15 @@
 pueblo-maldito-webapp
 
 WIP for http://pueblomaldito.com
+
+
+##Authors
+
+@alvaropinot
+
+@carlosbermejoNN
+
+@rubenutrillaNN
+
+
+
