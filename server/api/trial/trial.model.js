@@ -8,7 +8,11 @@ var TrialSchema = new Schema({
   info: String,
   active: Boolean,
   stats: {
-    sanity: Number
+    sanity: Number,
+    lives: {
+      type: Number,
+      default: 0
+    }
   },
   event: {type: mongoose.Schema.Types.ObjectId, ref: 'Event'}
 });
