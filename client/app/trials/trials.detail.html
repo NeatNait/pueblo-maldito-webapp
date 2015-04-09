@@ -2,6 +2,13 @@
 <span class="text-muted">{{trial.info || '&nbsp'}}</span>
 <div class="text-muted">{{trial.stats.sanity}}</div>
 
+
+<div class="progress">
+  <div class="progress-bar" role="progressbar" aria-valuenow="{{trial.users.length}}" aria-valuemin="0" aria-valuemax="100" style="width:{{usersPassedPercent()}}%">
+    {{trial.users.length}}
+  </div>
+</div>
+
 <form name="form" class="trial-form" ng-submit="add(form)" novalidate>
   <p class="input-group">
     <!--input type="text" class="form-control" placeholder="Add a new trial here." ng-model="newTrial.name"-->
@@ -12,7 +19,7 @@
       <label>Code</label>
 
       <div class="input-group">
-        <input type="text" name="code" class="form-control" ng-model="code" required/>
+        <input type="text" name="code" class="form-control" ng-model="code" ng-change="cleanErrors()" required/>
         <span class="input-group-btn">
           <button type="submit" class="btn btn-primary">Scan Code</button>
         </span>
@@ -21,8 +28,70 @@
       <p class="help-block" ng-show="form.code.$error.required && submitted">
         A code is required
       </p>
+      <p ng-show="errors.userNotChanged">
+        <div ng-show="errors.userNotChanged" class="alert alert-info" role="alert">
+          Player <strong>#{{lastUserScanned.code}}</strong> has already participated in this trial
+        </div>
+      </p>
 
     </div>
 
   </p>
 </form>
+
+
+
+<div ng-show="lastUserScanned">
+  <div ng-hide="lastUserScanned.stats.sanity > 1" class="alert alert-warning" role="alert">User <strong>{{lastUserScanned.name}}</strong> is mad, send him to sanatory</div>
+  <div ng-hide="lastUserScanned.stats.lives" class="alert alert-danger" role="alert">User <strong>{{lastUserScanned.name}}</strong> is dead, send him to sanatory</div>
+
+  <div class="panel panel-primary"
+    ng-class="{
+      'panel-danger' : lastUserScanned.stats.dead,
+      'panel-warning'  : lastUserScanned.stats.sanity < 1
+    }">
+    <div class="panel-heading">
+      <h3 class="panel-title"><strong>#{{lastUserScanned.code}}</strong> {{lastUserScanned.name}}</h3>
+    </div>
+    <div class="panel-body">
+            <ul class="list-group">
+          <li class="list-group-item">
+            <span class="badge progress-bar-success"
+              ng-class="{
+                'progress-bar-warning' : lastUserScanned.stats.sanity < 1
+              }">
+              {{lastUserScanned.stats.sanity}}
+            </span>
+            Sanity
+          </li>
+          <li class="list-group-item">
+            <span class="badge progress-bar-success"
+              ng-class="{
+                'progress-bar-danger' : lastUserScanned.stats.dead
+              }">
+              {{lastUserScanned.stats.lives}}
+            </span>
+            Lives
+          </li>
+          <li class="list-group-item">
+            <span class="badge progress-bar-success">
+              {{lastUserScanned.trials.length}}
+            </span>
+            Trials passed
+          </li>
+        </ul>
+    </div>
+  </div>
+</div>
+
+
+
+ <div class="panel panel-primary">
+      {{lastUserScanned}}
+
+
+
+      <span class="label label-default">New</span>
+      <a href="#" class="label label-default">Inbox <span class="badge">42</span></a>
+
+    </div>
