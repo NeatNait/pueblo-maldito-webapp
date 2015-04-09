@@ -29,7 +29,11 @@ var UserSchema = new Schema({
   stats: {
     sanity: {
       type: Number,
-      default: 100
+      default: 10
+    },
+    lives: {
+      type: Number,
+      default: 1
     }
   },
   trials: [{
