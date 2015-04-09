@@ -4,7 +4,15 @@ angular.module('puebloMalditoWebappApp')
   .controller('AdminCtrl', function ($scope, $http, Auth, User) {
 
     // Use the User $resource to fetch all users
-    $scope.users = User.query();
+    $scope.users = User.query(function(users){
+      return _.map(users, function(u){
+        //append hashCode for helping with search
+        u.hashCode = '#'+u.code;
+        return u;
+      });
+    });
+
+
 
     $scope.delete = function(user) {
       User.remove({ id: user._id });
