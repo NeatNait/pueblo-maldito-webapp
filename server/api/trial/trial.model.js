@@ -14,6 +14,14 @@ var TrialSchema = new Schema({
       default: 0
     }
   },
+  users: [{
+    user: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
+    status: String,
+    date: {
+      type: Date,
+      default: Date.now
+    }
+  }],
   event: {type: mongoose.Schema.Types.ObjectId, ref: 'Event'}
 });
 
