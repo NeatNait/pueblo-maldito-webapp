@@ -104,47 +104,84 @@ exports.authCallback = function(req, res, next) {
 };
 
 
+function updateStats(user, trial){
+
+  console.log(user.stats);
+  console.log(trial.stats);
+
+  _.each(_.pairs(user.stats), function(stat){
+    var statName = stat[0],
+        statValue = stat[1];
+
+    var value = user.stats[statName] - trial.stats[statName];
+    user.stats[statName] = (value >= 0) ? value : 0; //avoid negative values
+     // var sanity = user.stat - trial.stat.sanity;
+      //user.stats.sanity = (sanity >= 0) ? sanity : 0; //avoid negative sanity
+  });
+
+  return user.stats;
+}
+
 /**
  * Add a trial to a user
  */
 exports.addTrial = function(req, res, next) {
 
-  User.findOne({code : req.params.code}, function (err, user) {
-    if(user) {
+  User.findOne({code : req.params.code}, '-salt -hashedPassword', function (err, user) {
 
-      var trial = _.find(user.trials, function(trialPassed){
-        return trialPassed.trial == req.body.trialId;
-      });
+    if (err) return res.send(404);
 
-      if(!trial){
-        Trial.findById(req.body.trialId, function (err, trialObj){
+    var trialPassedStatus = _.find(user.trials, function(trialStatus){
+      return trialStatus.trial == req.body.trialId;
+    });
 
-          if(trialObj){
-            console.log(trialObj);
-            user.trials.push({
-              trial: req.body.trialId,
-              status: 'pasada',
-              date: Date.now()
-            });
+    if(!trialPassedStatus){
+      Trial.findById(req.body.trialId, function (err, trial){
 
-            user.stats.sanity = user.stats.sanity - trialObj.stats.sanity;
-            user.save(function(err) {
-              if (err) return validationError(res, err);
-              res.send(200);
-            });
+        if (err) return res.send(404);
+
+        if(trial.active){
+
+          var sanity = user.stats.sanity - trial.stats.sanity;
+          user.stats.sanity = (sanity >= 0) ? sanity : 0; //avoid negative sanity
+
+          //user.stats = updateStats(user, trial);
+
+          var trialStatus;
+          if(user.stats.sanity){
+            trialStatus = 'passed';
           }
           else{
-            res.send(500, err);
+            trialStatus = 'failed';
           }
-        });
-      }
-      else{
-        res.send(200);
-      }
 
-    } else {
-      res.send(404);
+          user.trials.push({
+            trial: req.body.trialId,
+            status: trialStatus,
+            date: Date.now()
+          });
+
+          trial.users.push({
+            user: user,
+            status: trialStatus
+          });
+          trial.save();
+
+          user.save(function(err) {
+            if (err) return validationError(res, err);
+            res.send(200, {user:user, trial:trial});
+          });
+        }
+        else{
+          //TODO
+          res.send(403, err);
+        }
+      });
     }
+    else{
+      res.send(202, {user:user});
+    }
+
   });
 
 };
