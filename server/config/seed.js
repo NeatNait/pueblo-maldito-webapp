@@ -132,7 +132,7 @@ function createTrials(event){
         //info: faker.lorem.paragraph(),
         active: true,
         stats: {
-          sanity: faker.random.number({min:-5, max:10})
+          sanity: faker.random.number({min:-10, max:10})
         },
         event: event
       });
