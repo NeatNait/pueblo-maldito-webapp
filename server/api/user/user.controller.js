@@ -104,22 +104,17 @@ exports.authCallback = function(req, res, next) {
 };
 
 
-function updateStats(user, trial){
+function updateStatsByTrial(userStats, trialStats){
 
-  console.log(user.stats);
-  console.log(trial.stats);
-
-  _.each(_.pairs(user.stats), function(stat){
+  _.each(_.pairs(userStats), function(stat){
     var statName = stat[0],
-        statValue = stat[1];
+        statValue = stat[1],
+        value = userStats[statName] + trialStats[statName];
 
-    var value = user.stats[statName] - trial.stats[statName];
-    user.stats[statName] = (value >= 0) ? value : 0; //avoid negative values
-     // var sanity = user.stat - trial.stat.sanity;
-      //user.stats.sanity = (sanity >= 0) ? sanity : 0; //avoid negative sanity
+    userStats[statName] = (value >= 0) ? value : 0; //avoid negative values
   });
 
-  return user.stats;
+  return userStats;
 }
 
 /**
@@ -142,10 +137,8 @@ exports.addTrial = function(req, res, next) {
 
         if(trial.active){
 
-          var sanity = user.stats.sanity - trial.stats.sanity;
-          user.stats.sanity = (sanity >= 0) ? sanity : 0; //avoid negative sanity
-
-          //user.stats = updateStats(user, trial);
+          //stats.toObject() is needed to cast model to obj
+          user.stats = updateStatsByTrial(user.stats.toObject(), trial.stats.toObject());
 
           var trialStatus;
           if(user.stats.sanity){
