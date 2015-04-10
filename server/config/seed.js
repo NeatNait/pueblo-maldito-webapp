@@ -138,6 +138,17 @@ function createTrials(event){
       });
     }
 
+    trials.push({
+      name: '_Death!',
+      info: faker.hacker.phrase(),
+      active: true,
+      stats: {
+        sanity: -1000,
+        lives: -1000
+      },
+      event: event
+    })
+
     Trial.create(trials, function(err, docs) {
       if(err){
         console.log(err);
