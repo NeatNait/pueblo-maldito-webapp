@@ -23,6 +23,12 @@ angular.module('puebloMalditoWebappApp')
         params: {
           id:'me'
         }
+      },
+      getByCode: {
+        method: 'GET',
+        params: {
+          id:'code',
+        }
       }
 	  });
   });

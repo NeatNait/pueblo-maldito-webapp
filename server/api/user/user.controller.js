@@ -100,10 +100,10 @@ exports.me = function(req, res, next) {
  * Get public profile
  */
 exports.userByCode = function(req, res, next) {
-  var userId = req.user._id;
+  
   User.findOne({
     code : req.params.code
-  }, '-salt -hashedPassword', function(err, user) { // don't ever give out the password or salt
+  }, function(err, user) { // don't ever give out the password or salt
     if (err) return next(err);
     if (!user) return res.json(401);
     res.json(user);

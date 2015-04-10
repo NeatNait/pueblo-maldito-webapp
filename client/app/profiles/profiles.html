@@ -1,0 +1,38 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+<div class="container">
+
+	<div class="col-md-4">
+		<label>Code:</label>
+		<div class="input-group">
+		  <input type="text" name="code" class="form-control" ng-model="publicProfile.code" />
+		</div>
+
+		<label>Name:</label>
+		<div class="input-group">
+		  <input type="text" name="name" class="form-control" ng-model="publicProfile.name" disabled/>
+		</div>
+
+		<label>Email:</label>
+		<div class="input-group">
+		  <input type="text" name="email" class="form-control" ng-model="publicProfile.email" disabled/>
+		</div>
+
+		<label>Member since:</label>
+		<div class="input-group">
+		  <input type="text" name="created" class="form-control" ng-model="publicProfile.created" disabled/>
+		</div>
+
+		<label>Sanity:</label>
+		<div class="input-group">
+		  <input type="text" name="sanity" class="form-control" ng-model="publicProfile.stats.sanity" disabled/>
+		</div>
+
+		<label>Lives:</label>
+		<div class="input-group">
+		  <input type="text" name="lives" class="form-control" ng-model="publicProfile.stats.lives" disabled/>
+		</div>
+	</div>
+	<div class="col-md-8">
+		<h3>TRIALS PASSED</h3>
+	</div>
+</div>
