@@ -17,4 +17,6 @@ router.post('/', controller.create);
 // TODO : change admin for staff
 router.put('/:code/trial', auth.hasRole('admin'), controller.addTrial);
 
+router.get('/code/:code', controller.userByCode);
+
 module.exports = router;
