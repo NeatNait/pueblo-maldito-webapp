@@ -42,8 +42,8 @@
 
 
 <div ng-show="lastUserScanned">
-  <div ng-hide="lastUserScanned.stats.sanity > 1" class="alert alert-warning" role="alert">User <strong>{{lastUserScanned.name}}</strong> is mad, send him to sanatory</div>
-  <div ng-hide="lastUserScanned.stats.lives" class="alert alert-danger" role="alert">User <strong>{{lastUserScanned.name}}</strong> is dead, send him to sanatory</div>
+  <div ng-hide="lastUserScanned.stats.sanity > 1" class="alert alert-warning" role="alert">Player <strong>{{lastUserScanned.name}}</strong> is mad, send him to sanatory</div>
+  <div ng-hide="lastUserScanned.stats.lives" class="alert alert-danger" role="alert">Player <strong>{{lastUserScanned.name}}</strong> is dead, send him to XXX</div>
 
   <div class="panel panel-primary"
     ng-class="{
@@ -67,7 +67,7 @@
           <li class="list-group-item">
             <span class="badge progress-bar-success"
               ng-class="{
-                'progress-bar-danger' : lastUserScanned.stats.dead
+                'progress-bar-danger' : lastUserScanned.stats.lives < 1
               }">
               {{lastUserScanned.stats.lives}}
             </span>
@@ -84,14 +84,11 @@
   </div>
 </div>
 
-
-
- <div class="panel panel-primary">
-      {{lastUserScanned}}
-
-
-
-      <span class="label label-default">New</span>
-      <a href="#" class="label label-default">Inbox <span class="badge">42</span></a>
-
-    </div>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title">Debug data</h3>
+  </div>
+  <div class="panel-body">
+    {{lastUserScanned}}
+  </div>
+</div>
