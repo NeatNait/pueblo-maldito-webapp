@@ -1,0 +1,83 @@
+@import url(http://fonts.googleapis.com/css?family=Raleway);
+
+.container.profile {
+	background:#111;
+	color:white;
+	font-family: 'Raleway', sans-serif;
+	text-align:center;
+}
+
+.img-circle{
+	width:100%;
+	height:300px;
+	background: url('/assets/images/square.png');
+	 background-repeat: no-repeat;
+    background-position: 50% 20%; 
+	border-radius:50%;
+	background-size: contain;
+	text-align:center;
+}
+
+h2.profile-header {
+	margin-bottom:40px;
+	text-align:center;
+	color: #0BD269;
+}
+h2.alive {
+  color: #0BD269;
+}
+
+h2.dead {
+	color:rgb(240, 69, 69);
+}
+
+span.badge.good {
+	font-size:50px;
+	background-color: #0BD269;
+}
+
+span.badge.bad {
+	font-size:50px;
+	background-color: rgb(240, 69, 69);
+}
+
+.progress.profile {
+	height:30px;
+	margin-bottom:50px;
+}
+.progress-bar.green {
+	background-color:#0BD269;
+	font-size:30px;
+	line-height:25px;
+}
+
+
+/** PROFILES TRIALS CSS **/
+.profile-trial span.glyphicon.glyphicon-star{
+	color:#111;
+	font-size:40px;
+	float:left;
+	color: #0BD269;
+	top:-3px;
+	margin-right: 15px;
+
+}
+
+.profile-trial {
+	text-align:left;
+}
+
+
+li.list-group-item.profile-trial {
+	background-color:#111;
+	margin-bottom:50px;
+	border:none;
+-webkit-box-shadow: 0px 0px 40px 5px rgba(11,210,104,1);
+-moz-box-shadow: 0px 0px 40px 5px rgba(11,210,104,1);
+box-shadow: 0px 0px 40px 5px rgba(11,210,104,1);
+padding-top:15px;
+}
+
+.text-muted {
+	float:left;
+}

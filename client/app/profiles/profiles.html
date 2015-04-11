@@ -1,39 +1,23 @@
-<div ng-include="'components/navbar/navbar.html'"></div>
-<div class="container">
+<!--div ng-include="'components/navbar/navbar.html'"></div-->
+<div class="container profile">
 
-	<div class="col-md-4">
-		<label>Code:</label>
-		<div class="input-group">
-		  <input type="text" name="code" class="form-control" ng-model="publicProfile.code" />
-		</div>
+	<div class="col-md-12">
+		<h2 class="profile-header">{{publicProfile.name}}</h2>
+		<div class="img-circle"></div>
+		<h2 ng-Show="publicProfile.stats.lives > 0" class="alive">Estás vivo</h2>
+		<h2 ng-Show="publicProfile.stats.lives <= 0" class="dead">Estás muerto</h2>
 
-		<label>Name:</label>
-		<div class="input-group">
-		  <input type="text" name="name" class="form-control" ng-model="publicProfile.name" disabled/>
-		</div>
 
-		<label>Email:</label>
-		<div class="input-group">
-		  <input type="text" name="email" class="form-control" ng-model="publicProfile.email" disabled/>
+		  <h2>Cordura Restante<br/></h2>
+		  <span ng-Show="publicProfile.stats.sanity > 3 " class="badge good">{{publicProfile.stats.sanity}}</span>
+		  <span ng-Show="publicProfile.stats.sanity <= 3" class="badge bad">{{publicProfile.stats.sanity}}</span>
+		
+		<h2>PRUEBAS REALIZADAS</h2>
+		<div class="progress profile">
+		  <div class="progress-bar green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width:{{TrialsPassedPercent()}}%">
+		    {{TrialsPassedPercent()}}%
+		  </div>
 		</div>
-
-		<label>Member since:</label>
-		<div class="input-group">
-		  <input type="text" name="created" class="form-control" ng-model="publicProfile.created" disabled/>
-		</div>
-
-		<label>Sanity:</label>
-		<div class="input-group">
-		  <input type="text" name="sanity" class="form-control" ng-model="publicProfile.stats.sanity" disabled/>
-		</div>
-
-		<label>Lives:</label>
-		<div class="input-group">
-		  <input type="text" name="lives" class="form-control" ng-model="publicProfile.stats.lives" disabled/>
-		</div>
-	</div>
-	<div class="col-md-8">
-		<h3>TRIALS PASSED</h3>
-		<trial-list allow-delete="false" trials="trials"></trial-list>
+		<profile-trials trials="trials" ></profile-trials>
 	</div>
 </div>
