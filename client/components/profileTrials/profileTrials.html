@@ -1,0 +1,9 @@
+<ul class="list-group">
+  <li class="list-group-item profile-trial" ng-repeat="trial in trials | orderBy: 'name' | filter:searchTrial ">
+  	  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+      <h3 class="trial-name">{{trial.name}}</h3><br />
+      <span class="text-muted">{{trial.info || '&nbsp'}}</span>
+      <a ng-click="delete(trial)" class="trash" ng-show="{{allowDelete}}"><span class="glyphicon glyphicon-trash pull-right"></span></a><br/><br/>
+      <div class="text-muted">Resultado cordura: {{trial.stats.sanity}}</div><br/>
+  </li>
+</ul>
