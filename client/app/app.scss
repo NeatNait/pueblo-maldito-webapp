@@ -1,8 +1,13 @@
+@import '_variables';
+
+
 $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/";
 $fa-font-path: "/bower_components/font-awesome/fonts";
 
+
 @import 'bootstrap-sass-official/vendor/assets/stylesheets/bootstrap';
 @import 'font-awesome/scss/font-awesome';
+
 
 /**
  * App-wide Styles
@@ -17,11 +22,22 @@ $fa-font-path: "/bower_components/font-awesome/fonts";
 
 // Component styles are injected through grunt
 // injector
+@import '_variables.scss';
 @import 'account/login/login.scss';
 @import 'admin/admin.scss';
 @import 'admin/trial/trial.scss';
 @import 'main/main.scss';
+@import 'profile/profile.scss';
+@import 'profiles/profiles.scss';
 @import 'trials/trials.scss';
 @import 'modal/modal.scss';
 @import 'trialList/trialList.scss';
 // endinjector
+
+/*.ng-enter, .ng-move{
+  animation: slideInLeft 1s;
+}
+
+.ng-leave{
+  animation: slideOutLeft 1s;
+}*/
