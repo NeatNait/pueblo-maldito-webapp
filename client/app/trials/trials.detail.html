@@ -18,16 +18,28 @@
                                           'has-error': form.name.$invalid && submitted }">
       <label>Code</label>
 
-      <div class="input-group">
-        <input type="text" name="code" class="form-control" ng-model="code" ng-change="cleanErrors()" required/>
-        <span class="input-group-btn">
-          <button type="submit" class="btn btn-primary">Scan Code</button>
-        </span>
+      <input type="text" name="code" class="form-control" ng-model="code" ng-change="cleanErrors()" pattern="\d*" required/>
+
+      <br>
+
+      <div class="btn-group btn-group-justified" role="group" aria-label="Trial buttons">
+        <div class="btn-group" role="group">
+          <button type="submit" class="btn btn-default">Check Stats</button>
+        </div>
+        <div class="btn-group" role="group">
+          <button type="submit" class="btn btn-success">Pass Trial</button>
+        </div>
+        <div class="btn-group" role="group">
+          <button type="submit" class="btn btn-danger">Fail Trial</button>
+        </div>
       </div>
+
 
       <p class="help-block" ng-show="form.code.$error.required && submitted">
         A code is required
       </p>
+
+
       <p ng-show="errors.userNotChanged">
         <div ng-show="errors.userNotChanged" class="alert alert-info" role="alert">
           Player <strong>#{{lastUserScanned.code}}</strong> has already participated in this trial
@@ -42,13 +54,13 @@
 
 
 <div ng-show="lastUserScanned">
-  <div ng-hide="lastUserScanned.stats.sanity > 1" class="alert alert-warning" role="alert">Player <strong>{{lastUserScanned.name}}</strong> is mad, send him to sanatory</div>
-  <div ng-hide="lastUserScanned.stats.lives" class="alert alert-danger" role="alert">Player <strong>{{lastUserScanned.name}}</strong> is dead, send him to XXX</div>
+  <div ng-hide="lastUserScanned.stats.sanity" class="alert alert-warning" role="alert"><strong>{{lastUserScanned.name}}</strong> is mad, send player to sanatory</div>
+  <div ng-hide="lastUserScanned.stats.lives" class="alert alert-danger" role="alert"><strong>{{lastUserScanned.name}}</strong> is dead, send player to XXX</div>
 
-  <div class="panel panel-primary"
+  <div class="panel panel-success"
     ng-class="{
-      'panel-danger' : lastUserScanned.stats.dead,
-      'panel-warning'  : lastUserScanned.stats.sanity < 1
+      'panel-danger' : !lastUserScanned.stats.lives,
+      'panel-warning'  : !lastUserScanned.stats.sanity
     }">
     <div class="panel-heading">
       <h3 class="panel-title"><strong>#{{lastUserScanned.code}}</strong> {{lastUserScanned.name}}</h3>
@@ -58,7 +70,7 @@
           <li class="list-group-item">
             <span class="badge progress-bar-success"
               ng-class="{
-                'progress-bar-warning' : lastUserScanned.stats.sanity < 1
+                'progress-bar-warning' : !lastUserScanned.stats.sanity
               }">
               {{lastUserScanned.stats.sanity}}
             </span>
@@ -67,7 +79,7 @@
           <li class="list-group-item">
             <span class="badge progress-bar-success"
               ng-class="{
-                'progress-bar-danger' : lastUserScanned.stats.lives < 1
+                'progress-bar-danger' : !lastUserScanned.stats.lives
               }">
               {{lastUserScanned.stats.lives}}
             </span>
@@ -84,11 +96,11 @@
   </div>
 </div>
 
-<div class="panel panel-primary">
+<!--div class="panel panel-primary">
   <div class="panel-heading">
     <h3 class="panel-title">Debug data</h3>
   </div>
   <div class="panel-body">
     {{lastUserScanned}}
   </div>
-</div>
+</div-->
