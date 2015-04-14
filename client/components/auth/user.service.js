@@ -2,7 +2,7 @@
 
 angular.module('puebloMalditoWebappApp')
   .factory('User', function ($resource) {
-    return $resource('/api/users/:id/:controller', {
+    return $resource('/api/users/:id/:controller/:action', {
       id: '@_id'
     },
     {
@@ -12,10 +12,18 @@ angular.module('puebloMalditoWebappApp')
           controller:'password'
         }
       },
-      addTrial: {
+      completeTrial: {
         method: 'PUT',
         params: {
-          controller:'trial'
+          controller:'trial',
+          action:'complete'
+        }
+      },
+      checkinTrial: {
+        method: 'PUT',
+        params: {
+          controller:'trial',
+          action:'checkin'
         }
       },
       get: {

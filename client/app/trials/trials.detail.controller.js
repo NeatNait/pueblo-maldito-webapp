@@ -24,13 +24,13 @@ angular.module('puebloMalditoWebappApp')
 
     $scope.cleanErrors();
 
-    $scope.add = function(form) {
+    $scope.completeTrial = function(form) {
       $scope.submitted = true;
       if(form.$valid) {
 
         $scope.lastUserScanned = false;
 
-        User.addTrial({ id: $scope.code }, {trialId: $stateParams.trialId}, function(data){
+        User.completeTrial({ id: $scope.code }, {trialId: $stateParams.trialId}, function(data){
 
           $scope.cleanErrors();
 
@@ -54,11 +54,46 @@ angular.module('puebloMalditoWebappApp')
           /*if(err.status === 304){
             $scope.errors.userNotChanged = true;
           }*/
-          console.log(err);
+          $scope.errors = err;
         });
       }
     };
 
+    $scope.checkin = function(form) {
+      $scope.submitted = true;
+      if(form.$valid) {
+
+        $scope.lastUserScanned = false;
+
+        User.checkinTrial({ id: $scope.code }, {trialId: $stateParams.trialId}, function(data){
+
+          $scope.cleanErrors();
+
+          $scope.code = '';
+          $scope.lastUserScanned = data.user;
+
+          //first time passed trial
+          if(data.trial){
+            $scope.trial = data.trial;
+          }
+          else{
+            $scope.errors.userNotChanged = true;
+          }
+
+          $scope.submitted = false;
+
+        }, function(err){
+          // TODO : Show errors
+          //if(404)
+
+          /*if(err.status === 304){
+            $scope.errors.userNotChanged = true;
+          }*/
+          $scope.errors = err;
+
+        });
+      }
+    };
 
     function calculateDigit(number){
 
@@ -84,16 +119,16 @@ angular.module('puebloMalditoWebappApp')
       return calculateDigit(originalNumber) === controlDigit;
     }
 
-    /*for (var i = 0; i < 700; i++) {
-      console.log('input', i);
+    for (var i = 0; i < 900; i++) {
+      //console.log('input', i);
       var n = _.parseInt(i+''+calculateDigit(i));
       console.log(n);
-      console.log(i+''+checkDigit(n));
-    };*/
+      //console.log(i+''+checkDigit(n));
+    };
 
-    for (var i = 0; i < 700; i++) {
+    /*for (var i = 0; i < 700; i++) {
       console.log('input', i);
       console.log(i+''+checkDigit(i));
-    };
+    };*/
 
   });

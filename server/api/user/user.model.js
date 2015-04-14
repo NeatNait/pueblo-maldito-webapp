@@ -38,13 +38,22 @@ var UserSchema = new Schema({
   },
   trialsChecked: [{
     trial: {type: mongoose.Schema.Types.ObjectId, ref: 'Trial'},
-    status: String,
-    date: Date
+    status: {
+      type: String,
+      default: 'checkin'
+    },
+    date: {
+      type: Date,
+      default: Date.now
+    }
   }],
   trials: [{
     trial: {type: mongoose.Schema.Types.ObjectId, ref: 'Trial'},
     status: String,
-    date: Date
+    date: {
+      type: Date,
+      default: Date.now
+    }
   }]
 });
 /**

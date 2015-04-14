@@ -15,7 +15,8 @@ router.get('/:id', auth.isAuthenticated(), controller.show);
 router.post('/', controller.create);
 
 // TODO : change admin for staff
-router.put('/:code/trial', auth.hasRole('admin'), controller.addTrial);
+router.put('/:code/trial/complete', auth.hasRole('admin'), controller.completeTrial);
+router.put('/:code/trial/checkin', auth.hasRole('admin'), controller.checkinTrial);
 
 router.get('/code/:code', controller.userByCode);
 

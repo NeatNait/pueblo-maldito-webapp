@@ -9,7 +9,7 @@
   </div>
 </div>
 
-<form name="form" class="trial-form" ng-submit="add(form)" novalidate>
+<form name="form" class="trial-form"  novalidate>
   <p class="input-group">
     <!--input type="text" class="form-control" placeholder="Add a new trial here." ng-model="newTrial.name"-->
 
@@ -17,21 +17,32 @@
     <div class="form-group" ng-class="{ 'has-success': form.name.$valid && submitted,
                                           'has-error': form.name.$invalid && submitted }">
       <label>Code</label>
+      <div class="input-group">
+        <span class="input-group-addon" id="code-addon">#</span>
+        <input type="text" name="code" class="form-control"
+          ng-model="code" ng-change="cleanErrors()"
+          pattern="\d*" placeholder="code"
+          aria-describedby="code-addon" required/>
+      </div>
 
-      <input type="text" name="code" class="form-control" ng-model="code" ng-change="cleanErrors()" pattern="\d*" required/>
 
       <br>
 
       <div class="btn-group btn-group-justified" role="group" aria-label="Trial buttons">
         <div class="btn-group" role="group">
-          <button type="submit" class="btn btn-default">Check Stats</button>
+          <button ng-click="checkin(form)" class="btn btn-primary">
+            <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+            Checkin
+          </button>
         </div>
         <div class="btn-group" role="group">
-          <button type="submit" class="btn btn-success">Pass Trial</button>
+          <button ng-click="completeTrial(form)" class="btn btn-success">
+            <span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
+            Pass Trial</button>
         </div>
-        <div class="btn-group" role="group">
+        <!--div class="btn-group" role="group">
           <button type="submit" class="btn btn-danger">Fail Trial</button>
-        </div>
+        </div-->
       </div>
 
 
@@ -40,9 +51,13 @@
       </p>
 
 
-      <p ng-show="errors.userNotChanged">
+      <p>
         <div ng-show="errors.userNotChanged" class="alert alert-info" role="alert">
           Player <strong>#{{lastUserScanned.code}}</strong> has already participated in this trial
+        </div>
+
+        <div ng-show="errors.status == 404" class="alert alert-danger" role="alert">
+          User <strong>#{{code}}</strong> not found
         </div>
       </p>
 

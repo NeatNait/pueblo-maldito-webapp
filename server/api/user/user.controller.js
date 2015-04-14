@@ -100,7 +100,7 @@ exports.me = function(req, res, next) {
  * Get public profile
  */
 exports.userByCode = function(req, res, next) {
-  
+
   User.findOne({
     code : req.params.code
   }, function(err, user) { // don't ever give out the password or salt
@@ -132,13 +132,13 @@ function updateStatsByTrial(userStats, trialStats){
 }
 
 /**
- * Add a trial to a user
+ * Complete in trial in user and trial
  */
-exports.addTrial = function(req, res, next) {
+exports.completeTrial = function(req, res, next) {
 
   User.findOne({code : req.params.code}, '-salt -hashedPassword', function (err, user) {
 
-    if (err) return res.send(404);
+    if (err || !user) return res.send(404, 'user not found');
 
     var trialPassedStatus = _.find(user.trials, function(trialStatus){
       return trialStatus.trial == req.body.trialId;
@@ -147,7 +147,7 @@ exports.addTrial = function(req, res, next) {
     if(!trialPassedStatus){
       Trial.findById(req.body.trialId, function (err, trial){
 
-        if (err) return res.send(404);
+        if (err || !trial) return res.send(404);
 
         if(trial.active){
 
@@ -188,6 +188,51 @@ exports.addTrial = function(req, res, next) {
     else{
       res.send(202, {user:user});
     }
+
+  });
+
+};
+
+
+/**
+ * Check in trial in user and trial
+ */
+exports.checkinTrial = function(req, res, next) {
+
+  User.findOne({code : req.params.code}, '-salt -hashedPassword', function (err, user) {
+
+    if (err || !user) return res.send(404);
+
+    var trialPassedStatus = _.find(user.trials, function(trialStatus){
+      return trialStatus.trial == req.body.trialId;
+    });
+
+    Trial.findById(req.body.trialId, function (err, trial){
+
+      if (err || !trial) return res.send(404);
+
+      if(trial.active){
+
+        user.trialsChecked.push({
+          trial: req.body.trialId,
+        });
+
+        trial.users.push({
+          user: user,
+          status: 'checkin'
+        });
+        trial.save();
+
+        user.save(function(err) {
+          if (err) return validationError(res, err);
+          res.send(200, {user:user, trial:trial});
+        });
+      }
+      else{
+        //TODO
+        res.send(403, err);
+      }
+    });
 
   });
 
