@@ -137,7 +137,7 @@ exports.completeTrial = function(req, res, next) {
 
   User.findOne({code : req.params.code}, '-salt -hashedPassword', function (err, user) {
 
-    if (err || !user) return res.send(404, 'user not found');
+    if (err || !user) return res.send(404);
 
     var trialPassedStatus = _.find(user.trials, function(trialStatus){
       return trialStatus.trial == req.body.trialId;
