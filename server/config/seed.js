@@ -80,6 +80,24 @@ User.find({}).remove(function() {
     code: 999
   });
 
+  users.push({
+    provider: 'local',
+    role: 'staff',
+    name: 'Staff',
+    email: 'staff@staff.com',
+    password: 'staff',
+    code: 985
+  });
+
+  users.push({
+    provider: 'local',
+    role: 'staff',
+    name: 'Staff 2',
+    email: '2@2.com',
+    password: '2',
+    code: 980
+  });
+
   User.create(users, function(err, docs) {
     if(err){
       console.log(err);
