@@ -10,6 +10,7 @@ angular.module('puebloMalditoWebappApp')
     $scope.isCollapsed = true;
     $scope.isLoggedIn = Auth.isLoggedIn;
     $scope.isAdmin = Auth.isAdmin;
+    $scope.isStaff = Auth.isStaff;
     $scope.getCurrentUser = Auth.getCurrentUser;
 
     $scope.logout = function() {
