@@ -1,12 +1,13 @@
 'use strict';
 
 angular.module('puebloMalditoWebappApp')
-  .controller('NavbarCtrl', function ($scope, $location, Auth) {
+  .controller('NavbarCtrl', function ($scope, $location, $state, Auth) {
     $scope.menu = [{
       'title': 'Home',
       'link': '/'
     }];
 
+    $scope.$state = $state;
     $scope.isCollapsed = true;
     $scope.isLoggedIn = Auth.isLoggedIn;
     $scope.isAdmin = Auth.isAdmin;
