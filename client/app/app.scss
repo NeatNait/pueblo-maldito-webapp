@@ -20,6 +20,10 @@ $fa-font-path: "/bower_components/font-awesome/fonts";
     padding: 0.2em 0;
 }
 
+.has-error .help-block{
+  color:$brand-danger;
+}
+
 // Component styles are injected through grunt
 // injector
 @import '_variables.scss';
