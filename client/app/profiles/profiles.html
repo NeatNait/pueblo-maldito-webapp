@@ -2,7 +2,7 @@
 <div class="container profile">
 
 	<div class="col-md-12">
-		<h2 class="profile-header">{{publicProfile.name}}</h2>
+		<h2 class="profile-header">{{publicProfile.nickname}}</h2>
 		<div class="img-circle"></div>
 		<h2 ng-Show="publicProfile.stats.lives > 0" class="alive">Estás vivo</h2>
 		<h2 ng-Show="publicProfile.stats.lives <= 0" class="dead">Estás muerto</h2>
@@ -12,12 +12,7 @@
 		  <span ng-Show="publicProfile.stats.sanity > 3 " class="badge good">{{publicProfile.stats.sanity}}</span>
 		  <span ng-Show="publicProfile.stats.sanity <= 3" class="badge bad">{{publicProfile.stats.sanity}}</span>
 		
-		<h2>PRUEBAS REALIZADAS</h2>
-		<div class="progress profile">
-		  <div class="progress-bar green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width:{{TrialsPassedPercent()}}%">
-		    {{TrialsPassedPercent()}}%
-		  </div>
-		</div>
+		<h2>¿Qué has hecho en Pueblo Maldito?</h2>
 		<profile-trials trials="trials" ></profile-trials>
 	</div>
 </div>
