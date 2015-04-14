@@ -3,7 +3,7 @@
 angular.module('puebloMalditoWebappApp')
   .controller('AdminCtrl', function ($scope, $http, $window, Auth, User) {
 
-    $scope.user = {};
+    $scope.user = {role:'user'};
     $scope.errors = {};
     $scope.isAdmin = Auth.isAdmin;
 
@@ -42,7 +42,7 @@ angular.module('puebloMalditoWebappApp')
         User.save(user,
           function(data) {
             $scope.users = User.query();
-            $scope.user = {};
+            $scope.user = {role:'user'};
             form.$setPristine();
             form.$setUntouched();
             $scope.submitted = false;

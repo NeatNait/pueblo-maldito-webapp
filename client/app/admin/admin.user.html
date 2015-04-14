@@ -49,11 +49,12 @@
         <div class="form-group" ng-show="isAdmin()">
 
           <label>Role</label>
-
-          <select class="form-control" ng-model="user.role">
-            <option>user</option>
-            <option>staff</option>
-          </select>
+          <br>
+          <div class="btn-group">
+              <label class="btn btn-success" ng-model="user.role" btn-radio="'user'" uncheckable>user</label>
+              <label class="btn btn-success" ng-model="user.role" btn-radio="'staff'" uncheckable>staff</label>
+              <label class="btn btn-success" ng-model="user.role" btn-radio="'admin'" uncheckable>admin</label>
+          </div>
 
         </div>
 
