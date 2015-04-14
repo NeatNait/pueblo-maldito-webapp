@@ -3,9 +3,10 @@
 angular.module('puebloMalditoWebappApp')
   .config(function ($stateProvider) {
     $stateProvider
-      .state('admin-trials', {
-        url: '/admin/trials',
+      .state('admin.trials', {
+        url: '/trials',
         templateUrl: 'app/admin/trial/trial.html',
-        controller: 'AdminTrialCtrl'
+        controller: 'AdminTrialCtrl',
+        authenticate: true
       });
   });
