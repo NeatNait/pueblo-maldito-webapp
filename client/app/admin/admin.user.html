@@ -1,0 +1,121 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1>Create user</h1>
+    </div>
+    <div class="col-sm-12">
+      <form class="form" name="form" ng-submit="register(form)" novalidate>
+
+        <div class="form-group" ng-class="{ 'has-success': form.name.$valid && submitted,
+                                            'has-error': form.name.$invalid && submitted }">
+          <label>Name</label>
+
+          <input type="text" name="name" class="form-control" ng-model="user.name"
+                 required/>
+          <p class="help-block" ng-show="form.name.$error.required && submitted">
+            A name is required
+          </p>
+        </div>
+
+        <div class="form-group" ng-class="{ 'has-success': form.nickname.$valid && submitted,
+                                            'has-error': form.nickname.$invalid && submitted }">
+          <label>Nickname</label>
+
+          <input type="text" name="nickname" class="form-control" ng-model="user.nickname"
+                 required/>
+          <p class="help-block" ng-show="form.nickname.$error.required && submitted">
+            A nickname is required
+          </p>
+        </div>
+
+        <div class="form-group" ng-class="{ 'has-success': form.email.$valid && submitted,
+                                            'has-error': form.email.$invalid && submitted }">
+          <label>Email</label>
+
+          <input type="email" name="email" class="form-control" ng-model="user.email"
+                 required
+                 mongoose-error/>
+          <p class="help-block" ng-show="form.email.$error.email && submitted">
+            Doesn't look like a valid email.
+          </p>
+          <p class="help-block" ng-show="form.email.$error.required && submitted">
+            What's your email address?
+          </p>
+          <p class="help-block" ng-show="form.email.$error.mongoose">
+            {{ errors.email }}
+          </p>
+        </div>
+
+        <div class="form-group" ng-show="isAdmin()">
+
+          <label>Role</label>
+
+          <select class="form-control" ng-model="user.role">
+            <option>user</option>
+            <option>staff</option>
+          </select>
+
+        </div>
+
+        <div class="form-group" ng-class="{ 'has-success': form.password.$valid && submitted,
+                                            'has-error': form.password.$invalid && submitted }">
+          <label>Password</label>
+
+          <input type="password" name="password" class="form-control" ng-model="user.password"
+                 ng-minlength="3"
+                 required
+                 mongoose-error/>
+          <p class="help-block"
+             ng-show="(form.password.$error.minlength || form.password.$error.required) && submitted">
+            Password must be at least 3 characters.
+          </p>
+          <p class="help-block" ng-show="form.password.$error.mongoose">
+            {{ errors.password }}
+          </p>
+        </div>
+
+        <div>
+          <button class="btn btn-primary" type="submit">
+            Create user
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+  <hr>
+</div>
+
+
+<div class="container">
+  <p>The delete user and user index api routes are restricted to users with the 'admin' role.</p>
+
+  <div class="input-group">
+    <input type="text" class="form-control" placeholder="Search for..." ng-model="searchText">
+    <span class="input-group-btn">
+      <button class="btn btn-default" type="button">Search!</button>
+    </span>
+  </div>
+
+  <br>
+
+  <ul class="list-group">
+    <!--li class="list-group-item" ng-repeat="user in users | orderBy: 'name' | filter:searchText | filter:{role:'!admin'} "-->
+    <li class="list-group-item" ng-repeat="user in users | orderBy: 'name' | filter:searchText">
+        <strong>{{user.name}}</strong> <span class="text-muted">#{{user.code}}</span><br>
+        <span class="text-muted">{{user.email}}</span><br>
+        <span class="text-muted">{{user.nickname}}</span><br>
+        <span class="text-muted">{{user.role}}</span><br>
+        <a ng-click="delete(user)" class="trash"><span class="glyphicon glyphicon-trash pull-right"></span></a>
+
+      <div>
+        <span ng-repeat="(key,value) in user.stats" class="badge progress-bar-success ng-binding" ng-class="{
+            'progress-bar-warning' : value < 2,
+            'progress-bar-danger' : !value,
+          }">
+          {{key}} {{value}}
+        </span>
+      </div>
+    </li>
+  </ul>
+</div>
