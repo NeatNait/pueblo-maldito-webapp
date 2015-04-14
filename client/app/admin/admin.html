@@ -77,7 +77,7 @@
         </div>
 
         <div>
-          <button class="btn btn-primary btn-lg btn-login" type="submit">
+          <button class="btn btn-primary" type="submit">
             Create user
           </button>
         </div>
@@ -102,11 +102,22 @@
   <br>
 
   <ul class="list-group">
-    <li class="list-group-item" ng-repeat="user in users | orderBy: 'name' | filter:searchText | filter:{name:'!Admin'} ">
+    <!--li class="list-group-item" ng-repeat="user in users | orderBy: 'name' | filter:searchText | filter:{role:'!admin'} "-->
+    <li class="list-group-item" ng-repeat="user in users | orderBy: 'name' | filter:searchText">
         <strong>{{user.name}}</strong> <span class="text-muted">#{{user.code}}</span><br>
         <span class="text-muted">{{user.email}}</span><br>
-        {{user.stats.sanity}}
+        <span class="text-muted">{{user.nickname}}</span><br>
+        <span class="text-muted">{{user.role}}</span><br>
         <a ng-click="delete(user)" class="trash"><span class="glyphicon glyphicon-trash pull-right"></span></a>
+
+      <div>
+        <span ng-repeat="(key,value) in user.stats" class="badge progress-bar-success ng-binding" ng-class="{
+            'progress-bar-warning' : value < 2,
+            'progress-bar-danger' : !value,
+          }">
+          {{key}} {{value}}
+        </span>
+      </div>
     </li>
   </ul>
 </div>
