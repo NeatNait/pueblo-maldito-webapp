@@ -137,6 +137,15 @@ angular.module('puebloMalditoWebappApp')
       },
 
       /**
+       * Check if a user is an staff
+       *
+       * @return {Boolean}
+       */
+      isStaff: function() {
+        return currentUser.role === 'staff';
+      },
+
+      /**
        * Get auth token
        */
       getToken: function() {
