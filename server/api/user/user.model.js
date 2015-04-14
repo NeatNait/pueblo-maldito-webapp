@@ -36,6 +36,11 @@ var UserSchema = new Schema({
       default: 1
     }
   },
+  trialsChecked: [{
+    trial: {type: mongoose.Schema.Types.ObjectId, ref: 'Trial'},
+    status: String,
+    date: Date
+  }],
   trials: [{
     trial: {type: mongoose.Schema.Types.ObjectId, ref: 'Trial'},
     status: String,
