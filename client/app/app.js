@@ -8,7 +8,8 @@ angular.module('puebloMalditoWebappApp', [
   'btford.socket-io',
   'ui.router',
   'ui.bootstrap',
-  'chart.js'
+  'chart.js',
+  'puebloMalditoWebappApp.resource'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider
