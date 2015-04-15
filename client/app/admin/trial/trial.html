@@ -2,14 +2,14 @@
   <h1>Create Trial</h1>
   <form name="form" class="trial-form" ng-submit="add(form)" novalidate>
     <p class="input-group">
-      <!--input type="text" class="form-control" placeholder="Add a new trial here." ng-model="newTrial.name"-->
+      <!--input type="text" class="form-control" placeholder="Add a new trial here." ng-model="trial.name"-->
 
       <!-- NAME -->
       <div class="form-group" ng-class="{ 'has-success': form.name.$valid && submitted,
                                             'has-error': form.name.$invalid && submitted }">
         <label>Name</label>
 
-        <input type="text" name="name" class="form-control" ng-model="newTrial.name"
+        <input type="text" name="name" class="form-control" ng-model="trial.name"
                required/>
         <p class="help-block" ng-show="form.name.$error.required && submitted">
           A name is required
@@ -21,7 +21,7 @@
                                             'has-error': form.info.$invalid && submitted }">
         <label>Info</label>
 
-        <input type="text" name="info" class="form-control" ng-model="newTrial.info"/>
+        <input type="text" name="info" class="form-control" ng-model="trial.info"/>
         <p class="help-block" ng-show="form.info.$error.required && submitted">
           Info is required
         </p>
@@ -32,14 +32,28 @@
                                             'has-error': form.sanity.$invalid && submitted }">
         <label>Sanity</label>
 
-        <input type="text" name="sanity" class="form-control" ng-model="newTrial.stats.sanity" required/>
+        <input type="text" name="sanity" class="form-control" ng-model="trial.stats.sanity" required/>
         <p class="help-block" ng-show="form.sanity.$error.required && submitted">
           Sanity is required
         </p>
       </div>
 
+      <!-- STATS: lives -->
+      <div class="form-group" ng-class="{ 'has-success': form.lives.$valid && submitted,
+                                            'has-error': form.lives.$invalid && submitted }">
+        <label>Lives</label>
+
+        <input type="text" name="lives" class="form-control" ng-model="trial.stats.lives" required/>
+        <p class="help-block" ng-show="form.lives.$error.required && submitted">
+          Lives is required
+        </p>
+      </div>
+
       <span class="input-group-btn">
-        <button type="submit" class="btn btn-primary">Add New</button>
+        <button type="submit" class="btn btn-primary">
+          <span class="glyphicon glyphicon-floppy-disk"></span>
+          Save
+        </button>
       </span>
     </p>
   </form>
