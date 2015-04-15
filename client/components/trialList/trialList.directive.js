@@ -6,8 +6,10 @@ angular.module('puebloMalditoWebappApp')
       templateUrl: 'components/trialList/trialList.html',
       restrict: 'E',
       scope: {
-        allowDelete: '=allowDelete',
-        trials: '=trials'
+        showControls: '=showControls',
+        trials: '=trials',
+        editFn: '=edit',
+        deleteFn: '=delete'
       },
       controller: function($scope, $element, $window, Trial){
         $scope.delete = function(trial) {
@@ -19,8 +21,12 @@ angular.module('puebloMalditoWebappApp')
                 $scope.trials.splice(i, 1);
               }
             });
+            $scope.deleteFn();
           };
         }
+
+        $scope.edit = $scope.editFn;
+
       },
       link: function (scope, element, attrs) {
       }
