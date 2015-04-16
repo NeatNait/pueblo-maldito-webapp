@@ -10,11 +10,11 @@
 
     var vm = this;
 
-    vm.usersPassedPercent = usersPassedPercent;
+    vm.checkin            = checkin;
     vm.cleanErrors        = cleanErrors;
     vm.completeTrial      = completeTrial;
-    vm.checkin            = checkin;
     vm.errors             = {};
+    vm.usersPassedPercent = usersPassedPercent;
 
     activate();
 
