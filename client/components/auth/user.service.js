@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('puebloMalditoWebappApp')
-  .factory('User', function ($resource) {
-    return $resource('/api/users/:id/:controller/:action', {
+  .factory('User', function (Resource) {
+    return Resource('/api/users/:id/:controller/:action', {
       id: '@_id'
     },
     {
