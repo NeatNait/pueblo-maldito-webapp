@@ -1,16 +1,16 @@
 'use strict';
 
 angular.module('puebloMalditoWebappApp')
-  .controller('ProfilesCtrl', function ($scope, $stateParams, User, Trial) {
+  .controller('ProfilesCtrl', function ($scope, $stateParams, User) {
   	$scope.trials = [];
-    var totalTrials = Trial.query();
+
     $scope.publicProfile = User.getByCode({ controller: $stateParams.code }, function(){
     	angular.forEach($scope.publicProfile.trials, function(value, key) {
-    		Trial.get({ id: value.trial }, function(a) {
-					$scope.trials.push(a);
-				});
+        console.log(value);
+			 $scope.trials.push(value.trial);
 			});
     });
 
+    
     
   });
