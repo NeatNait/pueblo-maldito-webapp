@@ -13,13 +13,4 @@ angular.module('puebloMalditoWebappApp')
     });
 
     
-    $scope.TrialsPassedPercent = function () {
-      if($scope.trials){
-        //return $scope.trial.users.length*100/400;
-        return Math.round(($scope.trials.length / totalTrials.length) * 100);
-      }
-      else{
-        return 0;
-      }
-    };
   });
