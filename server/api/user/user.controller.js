@@ -102,10 +102,13 @@ exports.userByCode = function(req, res, next) {
 
   User.findOne({
     code : req.params.code
-  },'-salt -hashedPassword -name -email', function(err, user) { // don't ever give out the password or salt
+  },'-salt -hashedPassword -name -email', function(err, user) {   
+  })
+  .populate('trials')
+  .exec(function (err, user) {
     if (err) return next(err);
     if (!user) return res.json(401);
-    res.json(user);
+    res.json(user); 
   });
 };
 
