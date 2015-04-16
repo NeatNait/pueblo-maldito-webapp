@@ -1,134 +1,134 @@
 'use strict';
 
 angular.module('puebloMalditoWebappApp')
-  .controller('TrialsDetailCtrl', function ($scope, $stateParams, trials, User) {
+  .controller('TrialsDetailCtrl', TrialsDetailCtrl);
 
-    trials.$promise.then(function(){
-      $scope.trial = _.find(trials, function(trial){
-        return trial._id === $stateParams.trialId;
+TrialsDetailCtrl.$inject = ['$stateParams', 'trials', 'User'];
+
+function TrialsDetailCtrl($stateParams, trials, User) {
+
+  var vm = this;
+
+  vm.usersPassedPercent = usersPassedPercent;
+  vm.cleanErrors        = cleanErrors;
+  vm.completeTrial      = completeTrial;
+  vm.checkin            = checkin;
+  vm.errors             = {};
+
+  activate();
+
+  function activate() {
+      return trials.$promise.then(function(){
+        vm.trial = _.find(trials, function(trial){
+          return trial._id === $stateParams.trialId;
+        });
       });
-    });
+  }
 
-    $scope.usersPassedPercent = function () {
-      if($scope.trial){
-        return $scope.trial.users.length*100/400;
-      }
-      else{
-        return 0;
-      }
-    };
+  function proccessForm(form){
+    vm.submitted = true;
+    if(form.$valid) {
+      vm.lastUserScanned = false;
+      return true;
+    }
+    return false;
+  }
 
-    $scope.cleanErrors = function () {
-      $scope.errors = {};
-    };
+  function completeTrial(form) {
+    if(proccessForm(form)) {
+      User.completeTrial({
+          id: vm.code
+        }, {
+          trialId: $stateParams.trialId
+        },
+        processCompleteOrCheckin,
+        handleErrors
+      );
+    }
+  }
 
-    $scope.cleanErrors();
+  function checkin(form) {
+    if(proccessForm(form)) {
+      User.checkinTrial({
+          id: vm.code
+        }, {
+          trialId: $stateParams.trialId
+        },
+        processCompleteOrCheckin,
+        handleErrors
+      );
+    }
+  }
 
-    $scope.completeTrial = function(form) {
-      $scope.submitted = true;
-      if(form.$valid) {
+  function processCompleteOrCheckin(data){
 
-        $scope.lastUserScanned = false;
+    vm.cleanErrors();
 
-        User.completeTrial({ id: $scope.code }, {trialId: $stateParams.trialId}, function(data){
+    vm.code = '';
+    vm.lastUserScanned = data.user;
 
-          $scope.cleanErrors();
-
-          $scope.code = '';
-          $scope.lastUserScanned = data.user;
-
-          //first time passed trial
-          if(data.trial){
-            $scope.trial = data.trial;
-          }
-          else{
-            $scope.errors.userNotChanged = true;
-          }
-
-          $scope.submitted = false;
-
-        }, function(err){
-          // TODO : Show errors
-          //if(404)
-
-          /*if(err.status === 304){
-            $scope.errors.userNotChanged = true;
-          }*/
-          $scope.errors = err;
-        });
-      }
-    };
-
-    $scope.checkin = function(form) {
-      $scope.submitted = true;
-      if(form.$valid) {
-
-        $scope.lastUserScanned = false;
-
-        User.checkinTrial({ id: $scope.code }, {trialId: $stateParams.trialId}, function(data){
-
-          $scope.cleanErrors();
-
-          $scope.code = '';
-          $scope.lastUserScanned = data.user;
-
-          //first time passed trial
-          if(data.trial){
-            $scope.trial = data.trial;
-          }
-          else{
-            $scope.errors.userNotChanged = true;
-          }
-
-          $scope.submitted = false;
-
-        }, function(err){
-          // TODO : Show errors
-          //if(404)
-
-          /*if(err.status === 304){
-            $scope.errors.userNotChanged = true;
-          }*/
-          $scope.errors = err;
-
-        });
-      }
-    };
-
-    function calculateDigit(number){
-
-      var numbers     = _.map((number+'').split(''), Number),//to string split and back to number
-          oddsEvens   = _.partition(numbers, evenPosition),
-          oddsSum     = _.sum(oddsEvens[1]) || 0, //prevent NaN for 1 digit numbers
-          evensSum    = _.sum(oddsEvens[0]),
-          result      = (evensSum*3 + oddsSum) % 10;
-
-      return result ? 10-result : result;
-
-      function evenPosition(num, i){
-        return i % 2 == 0;
-      }
+    //first time passed trial
+    if(data.trial){
+      vm.trial = data.trial;
+    }
+    else{
+      vm.errors.userNotChanged = true;
     }
 
-    function checkDigit(number){
-      var numberString   = number+'',
-          length         = numberString.length,
-          originalNumber = _.parseInt(numberString.substr(0, length-1)),
-          controlDigit   = _.parseInt(numberString.substr(length-1, length));
+    vm.submitted = false;
+  }
 
-      return calculateDigit(originalNumber) === controlDigit;
+  function cleanErrors() {
+    vm.errors = {};
+  }
+
+  function handleErrors(err) {
+    vm.errors = err;
+  }
+
+  function usersPassedPercent() {
+    if(vm.trial){
+      return vm.trial.users.length*100/400;
     }
+    else{
+      return 0;
+    }
+  }
 
-    for (var i = 0; i < 900; i++) {
-      //console.log('input', i);
-      var n = _.parseInt(i+''+calculateDigit(i));
-      console.log(n);
-      //console.log(i+''+checkDigit(n));
-    };
+  function calculateDigit(number){
 
-    /*for (var i = 0; i < 700; i++) {
-      console.log('input', i);
-      console.log(i+''+checkDigit(i));
-    };*/
+    var numbers     = _.map((number+'').split(''), Number),//to string split and back to number
+        oddsEvens   = _.partition(numbers, evenPosition),
+        oddsSum     = _.sum(oddsEvens[1]) || 0, //prevent NaN for 1 digit numbers
+        evensSum    = _.sum(oddsEvens[0]),
+        result      = (evensSum*3 + oddsSum) % 10;
 
-  });
+    return result ? 10-result : result;
+
+    function evenPosition(num, i){
+      return i % 2 == 0;
+    }
+  }
+
+  function checkDigit(number){
+    var numberString   = number+'',
+        length         = numberString.length,
+        originalNumber = _.parseInt(numberString.substr(0, length-1)),
+        controlDigit   = _.parseInt(numberString.substr(length-1, length));
+
+    return calculateDigit(originalNumber) === controlDigit;
+  }
+
+  /*for (var i = 0; i < 900; i++) {
+    //console.log('input', i);
+    var n = _.parseInt(i+''+calculateDigit(i));
+    console.log(n);
+    //console.log(i+''+checkDigit(n));
+  }*/
+
+  /*for (var i = 0; i < 700; i++) {
+    console.log('input', i);
+    console.log(i+''+checkDigit(i));
+  };*/
+
+}

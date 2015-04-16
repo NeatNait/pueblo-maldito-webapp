@@ -1,26 +1,26 @@
-<strong>{{trial.name}}</strong><br>
-<span class="text-muted">{{trial.info || '&nbsp'}}</span>
-<div class="text-muted">{{trial.stats.sanity}}</div>
-
+<strong>{{vm.trial.name}}</strong><br>
+<span class="text-muted">{{vm.trial.info || '&nbsp'}}</span>
+<div class="text-muted">{{vm.trial.stats.sanity}}</div>
 
 <div class="progress">
-  <div class="progress-bar" role="progressbar" aria-valuenow="{{trial.users.length}}" aria-valuemin="0" aria-valuemax="100" style="width:{{usersPassedPercent()}}%">
-    {{trial.users.length}}
+  <div class="progress-bar" role="progressbar" aria-valuenow="{{vm.trial.users.length}}" aria-valuemin="0" aria-valuemax="100" style="width:{{vm.usersPassedPercent()}}%">
+    {{vm.trial.users.length}}
   </div>
 </div>
 
-<form name="form" class="trial-form"  novalidate>
+<form name="form" class="trial-form" novalidate>
   <p class="input-group">
-    <!--input type="text" class="form-control" placeholder="Add a new trial here." ng-model="newTrial.name"-->
+    <!--input type="text" class="form-control" placeholder="Add a new trial here." ng-model="vm.newTrial.name"-->
 
     <!-- NAME -->
-    <div class="form-group" ng-class="{ 'has-success': form.name.$valid && submitted,
-                                          'has-error': form.name.$invalid && submitted }">
+
+    <div class="form-group" ng-class="{ 'has-success': form.name.$valid && vm.submitted,
+                                          'has-error': form.name.$invalid && vm.submitted }">
       <label>Code</label>
       <div class="input-group">
         <span class="input-group-addon" id="code-addon">#</span>
         <input type="text" name="code" class="form-control"
-          ng-model="code" ng-change="cleanErrors()"
+          ng-model="vm.code" ng-change="vm.cleanErrors()"
           pattern="\d*" placeholder="code"
           aria-describedby="code-addon" required/>
       </div>
@@ -30,13 +30,13 @@
 
       <div class="btn-group btn-group-justified" role="group" aria-label="Trial buttons">
         <div class="btn-group" role="group">
-          <button ng-click="checkin(form)" class="btn btn-primary">
+          <button ng-click="vm.checkin(form)" class="btn btn-primary">
             <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
             Checkin
           </button>
         </div>
         <div class="btn-group" role="group">
-          <button ng-click="completeTrial(form)" class="btn btn-success">
+          <button ng-click="vm.completeTrial(form)" class="btn btn-success">
             <span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
             Pass Trial</button>
         </div>
@@ -46,18 +46,18 @@
       </div>
 
 
-      <p class="help-block" ng-show="form.code.$error.required && submitted">
+      <p class="help-block" ng-show="form.code.$error.required && vm.submitted">
         A code is required
       </p>
 
 
       <p>
-        <div ng-show="errors.userNotChanged" class="alert alert-info" role="alert">
-          Player <strong>#{{lastUserScanned.code}}</strong> has already participated in this trial
+        <div ng-show="vm.errors.userNotChanged" class="alert alert-info" role="alert">
+          Player <strong>#{{vm.lastUserScanned.code}}</strong> has already participated in this trial
         </div>
 
-        <div ng-show="errors.status == 404" class="alert alert-danger" role="alert">
-          User <strong>#{{code}}</strong> not found
+        <div ng-show="vm.errors.status == 404" class="alert alert-danger" role="alert">
+          User <strong>#{{vm.code}}</strong> not found
         </div>
       </p>
 
@@ -67,42 +67,41 @@
 </form>
 
 
-
-<div ng-show="lastUserScanned">
-  <div ng-hide="lastUserScanned.stats.sanity" class="alert alert-warning" role="alert"><strong>{{lastUserScanned.name}}</strong> is mad, send player to sanatory</div>
-  <div ng-hide="lastUserScanned.stats.lives" class="alert alert-danger" role="alert"><strong>{{lastUserScanned.name}}</strong> is dead, send player to XXX</div>
+<div ng-show="vm.lastUserScanned">
+  <div ng-hide="vm.lastUserScanned.stats.sanity" class="alert alert-warning" role="alert"><strong>{{vm.lastUserScanned.name}}</strong> is mad, send player to sanatory</div>
+  <div ng-hide="vm.lastUserScanned.stats.lives" class="alert alert-danger" role="alert"><strong>{{vm.lastUserScanned.name}}</strong> is dead, send player to XXX</div>
 
   <div class="panel panel-success"
     ng-class="{
-      'panel-danger' : !lastUserScanned.stats.lives,
-      'panel-warning'  : !lastUserScanned.stats.sanity
+      'panel-danger' : !vm.lastUserScanned.stats.lives,
+      'panel-warning'  : !vm.lastUserScanned.stats.sanity
     }">
     <div class="panel-heading">
-      <h3 class="panel-title"><strong>#{{lastUserScanned.code}}</strong> {{lastUserScanned.name}}</h3>
+      <h3 class="panel-title"><strong>#{{vm.lastUserScanned.code}}</strong> {{vm.lastUserScanned.name}}</h3>
     </div>
     <div class="panel-body">
             <ul class="list-group">
           <li class="list-group-item">
             <span class="badge progress-bar-success"
               ng-class="{
-                'progress-bar-warning' : !lastUserScanned.stats.sanity
+                'progress-bar-warning' : !vm.lastUserScanned.stats.sanity
               }">
-              {{lastUserScanned.stats.sanity}}
+              {{vm.lastUserScanned.stats.sanity}}
             </span>
             Sanity
           </li>
           <li class="list-group-item">
             <span class="badge progress-bar-success"
               ng-class="{
-                'progress-bar-danger' : !lastUserScanned.stats.lives
+                'progress-bar-danger' : !vm.lastUserScanned.stats.lives
               }">
-              {{lastUserScanned.stats.lives}}
+              {{vm.lastUserScanned.stats.lives}}
             </span>
             Lives
           </li>
           <li class="list-group-item">
             <span class="badge progress-bar-success">
-              {{lastUserScanned.trials.length}}
+              {{vm.lastUserScanned.trials.length}}
             </span>
             Trials passed
           </li>
@@ -110,12 +109,3 @@
     </div>
   </div>
 </div>
-
-<!--div class="panel panel-primary">
-  <div class="panel-heading">
-    <h3 class="panel-title">Debug data</h3>
-  </div>
-  <div class="panel-body">
-    {{lastUserScanned}}
-  </div>
-</div-->

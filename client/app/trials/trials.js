@@ -23,7 +23,7 @@ angular.module('puebloMalditoWebappApp')
       .state('trials.detail', {
         url: '/:trialId',
         templateUrl: 'app/trials/trials.detail.html',
-        controller: 'TrialsDetailCtrl',
+        controller: 'TrialsDetailCtrl as vm',
         authenticate: true
       })
 
