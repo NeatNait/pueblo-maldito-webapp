@@ -1,54 +1,76 @@
-'use strict';
+(function(){
+  'use strict';
 
-angular.module('puebloMalditoWebappApp')
-  .controller('AdminCtrl', function ($scope, $http, $window, Auth, User) {
+  angular.module('puebloMalditoWebappApp')
+    .controller('AdminCtrl', AdminCtrl);
 
-    $scope.user = {role:'user'};
-    $scope.errors = {};
-    $scope.isAdmin = Auth.isAdmin;
+    AdminCtrl.$inject = ['$http', '$window', 'Auth', 'User']
 
-    // Use the User $resource to fetch all users
-    $scope.users = User.query(function(users){
-      return _.map(users, function(u){
-        //append hashCode for helping with search
-        u.hashCode = '#'+u.code;
-        return u;
-      });
-    });
+    function AdminCtrl($http, $window, Auth, User) {
 
-    $scope.add = function(form) {
-      $scope.submitted = true;
+      var vm = this;
 
-      if(form.$valid) {
+      vm.addUser = addUser;
+      vm.deleteUser = deleteUser;
+      vm.editUser = editUser;
+      vm.errors = {};
+      vm.isAdmin = Auth.isAdmin;
+      vm.user;
+      vm.users;
 
-        var user = $scope.user;
-        user.$save(
-          function(data) {
-            $scope.users = User.query();
-            $scope.user = {role:'user'};
-            form.$setPristine();
-            form.$setUntouched();
-            $scope.submitted = false;
-          },
-          function(err) {
-            err = err.data;
-            $scope.errors = {};
+      activate();
 
-            // Update validity of form fields that match the mongoose errors
-            angular.forEach(err.errors, function(error, field) {
-              form[field].$setValidity('mongoose', false);
-              $scope.errors[field] = error.message;
-            });
+      function activate () {
+        vm.user = new User();
+        vm.user.role = 'user';
+
+        vm.users = User.query(addUserHashChar);
+      }
+
+      function addUserHashChar(users){
+        return _.map(users, function(u){
+          //append # to hashCode for helping with search
+          u.hashCode = '#'+u.code;
+          return u;
         });
       }
-    };
 
-    $scope.edit = function (user) {
-      $scope.user = user;
-    };
+      function addUser() {
+        vm.submitted = true;
 
-    $scope.delete = function(user) {
-      $scope.user = {role:'user'};
-    };
+        if(vm.form.$valid) {
+          vm.user.$save(processData, handleErrors);
+        }
+      }
 
-  });
+      function processData(data) {
+        vm.users = User.query();
+        vm.user = {role:'user'};
+        vm.form.$setPristine();
+        vm.form.$setUntouched();
+        vm.submitted = false;
+      }
+
+      function handleErrors(err) {
+        err = err.data;
+        vm.errors = {};
+
+        // Update validity of vm.form fields that match the mongoose errors
+        angular.forEach(err.errors, function(error, field) {
+          vm.form[field].$setValidity('mongoose', false);
+          vm.errors[field] = error.message;
+        });
+      }
+
+      function editUser(user) {
+        vm.user = user;
+      }
+
+      function deleteUser(user) {
+        vm.user = new User();
+        vm.user.role = 'user';
+      }
+
+    }
+
+})();

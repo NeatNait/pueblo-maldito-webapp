@@ -4,74 +4,74 @@
       <h1>User</h1>
     </div>
     <div class="col-sm-12">
-      <form class="form" name="form" ng-submit="add(form)" novalidate>
+      <form class="form" name="vm.form" ng-submit="vm.addUser()" novalidate>
 
-        <div class="form-group" ng-class="{ 'has-success': form.name.$valid && submitted,
-                                            'has-error': form.name.$invalid && submitted }">
+        <div class="form-group" ng-class="{ 'has-success': vm.form.name.$valid && vm.submitted,
+                                            'has-error': vm.form.name.$invalid && vm.submitted }">
           <label>Name</label>
 
-          <input type="text" name="name" class="form-control" ng-model="user.name"
+          <input type="text" name="name" class="form-control" ng-model="vm.user.name"
                  required/>
-          <p class="help-block" ng-show="form.name.$error.required && submitted">
+          <p class="help-block" ng-show="vm.form.name.$error.required && vm.submitted">
             A name is required
           </p>
         </div>
 
-        <div class="form-group" ng-class="{ 'has-success': form.nickname.$valid && submitted,
-                                            'has-error': form.nickname.$invalid && submitted }">
+        <div class="form-group" ng-class="{ 'has-success': vm.form.nickname.$valid && vm.submitted,
+                                            'has-error': vm.form.nickname.$invalid && vm.submitted }">
           <label>Nickname</label>
 
-          <input type="text" name="nickname" class="form-control" ng-model="user.nickname"
+          <input type="text" name="nickname" class="form-control" ng-model="vm.user.nickname"
                  required/>
-          <p class="help-block" ng-show="form.nickname.$error.required && submitted">
+          <p class="help-block" ng-show="vm.form.nickname.$error.required && vm.submitted">
             A nickname is required
           </p>
         </div>
 
-        <div class="form-group" ng-class="{ 'has-success': form.email.$valid && submitted,
-                                            'has-error': form.email.$invalid && submitted }">
+        <div class="form-group" ng-class="{ 'has-success': vm.form.email.$valid && vm.submitted,
+                                            'has-error': vm.form.email.$invalid && vm.submitted }">
           <label>Email</label>
 
-          <input type="email" name="email" class="form-control" ng-model="user.email"
+          <input type="email" name="email" class="form-control" ng-model="vm.user.email"
                  required
                  mongoose-error/>
-          <p class="help-block" ng-show="form.email.$error.email && submitted">
+          <p class="help-block" ng-show="vm.form.email.$error.email && vm.submitted">
             Doesn't look like a valid email.
           </p>
-          <p class="help-block" ng-show="form.email.$error.required && submitted">
+          <p class="help-block" ng-show="vm.form.email.$error.required && vm.submitted">
             What's your email address?
           </p>
-          <p class="help-block" ng-show="form.email.$error.mongoose">
-            {{ errors.email }}
+          <p class="help-block" ng-show="vm.form.email.$error.mongoose">
+            {{ vm.errors.email }}
           </p>
         </div>
 
-        <div class="form-group" ng-show="isAdmin()">
+        <div class="form-group" ng-show="vm.isAdmin()">
 
           <label>Role</label>
           <br>
           <div class="btn-group">
-              <label class="btn btn-success" ng-model="user.role" btn-radio="'user'" uncheckable>user</label>
-              <label class="btn btn-success" ng-model="user.role" btn-radio="'staff'" uncheckable>staff</label>
-              <label class="btn btn-success" ng-model="user.role" btn-radio="'admin'" uncheckable>admin</label>
+              <label class="btn btn-success" ng-model="vm.user.role" btn-radio="'user'" uncheckable>user</label>
+              <label class="btn btn-success" ng-model="vm.user.role" btn-radio="'staff'" uncheckable>staff</label>
+              <label class="btn btn-success" ng-model="vm.user.role" btn-radio="'admin'" uncheckable>admin</label>
           </div>
 
         </div>
 
-        <div class="form-group" ng-class="{ 'has-success': form.password.$valid && submitted,
-                                            'has-error': form.password.$invalid && submitted }">
+        <div class="form-group" ng-class="{ 'has-success': vm.form.password.$valid && vm.submitted,
+                                            'has-error': vm.form.password.$invalid && vm.submitted }">
           <label>Password</label>
 
-          <input type="password" name="password" class="form-control" ng-model="user.password"
+          <input type="password" name="password" class="form-control" ng-model="vm.user.password"
                  ng-minlength="3"
                  required
                  mongoose-error/>
           <p class="help-block"
-             ng-show="(form.password.$error.minlength || form.password.$error.required) && submitted">
+             ng-show="(vm.form.password.$error.minlength || vm.form.password.$error.required) && vm.submitted">
             Password must be at least 3 characters.
           </p>
-          <p class="help-block" ng-show="form.password.$error.mongoose">
-            {{ errors.password }}
+          <p class="help-block" ng-show="vm.form.password.$error.mongoose">
+            {{ vm.errors.password }}
           </p>
         </div>
 
@@ -92,7 +92,7 @@
 <div class="container">
   <p>The delete user and user index api routes are restricted to users with the 'admin' role.</p>
 
-  <detail-list show-controls="true" elements="users" edit="edit" delete="delete" template="user"></detail-list>
+  <detail-list show-controls="true" elements="vm.users" edit="vm.editUser" delete="vm.deleteUser" template="user"></detail-list>
 
 </div>
 

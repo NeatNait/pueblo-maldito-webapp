@@ -8,6 +8,7 @@ angular.module('puebloMalditoWebappApp')
         abstract: 'true',
         templateUrl: 'app/admin/admin.html',
         controller: 'AdminCtrl',
+        controllerAs: 'vm',
         authenticate: true
       })
       .state('admin.user', {
