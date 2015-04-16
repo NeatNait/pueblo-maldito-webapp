@@ -6,7 +6,6 @@ angular.module('puebloMalditoWebappApp')
 
     $scope.publicProfile = User.getByCode({ controller: $stateParams.code }, function(){
     	angular.forEach($scope.publicProfile.trials, function(value, key) {
-        console.log(value);
 			 $scope.trials.push(value.trial);
 			});
     });

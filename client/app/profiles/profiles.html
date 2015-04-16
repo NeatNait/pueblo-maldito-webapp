@@ -3,16 +3,16 @@
 
 	<div class="col-md-12">
 		<h2 class="profile-header">{{publicProfile.nickname}}</h2>
-		<div class="img-circle"></div>
+		<div class="img-profile"></div>
 		<h2 ng-Show="publicProfile.stats.lives > 0" class="alive">Estás vivo</h2>
 		<h2 ng-Show="publicProfile.stats.lives <= 0" class="dead">Estás muerto</h2>
 
 
-		  <h2>Cordura Restante<br/></h2>
+		  <h2 class="phrase">Cordura Restante
 		  <span ng-Show="publicProfile.stats.sanity > 3 " class="badge good">{{publicProfile.stats.sanity}}</span>
 		  <span ng-Show="publicProfile.stats.sanity <= 3" class="badge bad">{{publicProfile.stats.sanity}}</span>
-		
-		<h2>¿Qué has hecho en Pueblo Maldito?</h2>
+			</h2>
+		<h2 class="phrase">¿Qué has hecho en Pueblo Maldito?</h2><br/><br/>
 		<profile-trials trials="trials" ></profile-trials>
 	</div>
 </div>
