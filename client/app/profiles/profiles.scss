@@ -34,21 +34,17 @@ h2.dead {
 span.badge.good {
 	font-size:50px;
 	background-color: #0BD269;
+	border-radius:50%;
+	line-height:40px;
+	font-size:32px;
 }
 
 span.badge.bad {
 	font-size:50px;
 	background-color: rgb(240, 69, 69);
-}
-
-.progress.profile {
-	height:30px;
-	margin-bottom:50px;
-}
-.progress-bar.green {
-	background-color:#0BD269;
-	font-size:30px;
-	line-height:25px;
+		border-radius:50%;
+	line-height:40px;
+	font-size:32px;
 }
 
 
