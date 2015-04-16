@@ -7,7 +7,7 @@ angular.module('puebloMalditoWebappApp')
         url: '/trials',
         abstract: 'true',
         templateUrl: 'app/trials/trials.html',
-        controller: 'TrialsCtrl',
+        controller: 'TrialsCtrl as vm',
         authenticate: true,
         resolve: {
           trials: function(Trial){

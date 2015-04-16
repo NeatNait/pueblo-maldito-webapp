@@ -1,6 +1,13 @@
-'use strict';
+(function(){
+  'use strict';
 
-angular.module('puebloMalditoWebappApp')
-  .controller('TrialsCtrl', function ($scope, trials) {
-    $scope.trials = trials;
-  });
+  angular.module('puebloMalditoWebappApp')
+    .controller('TrialsCtrl', TrialsCtrl);
+
+  TrialsCtrl.$inject = ['trials'];
+
+  function TrialsCtrl(trials) {
+    var vm = this;
+    vm.trials = trials;
+  }
+})();
