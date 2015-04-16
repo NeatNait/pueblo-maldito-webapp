@@ -5,17 +5,21 @@
 	color:white;
 	font-family: 'Raleway', sans-serif;
 	text-align:center;
+	width:100%;
 }
 
-.img-circle{
-	width:100%;
+.container.profile h2 {
+	font-family: 'Raleway', sans-serif;
+}
+
+.img-profile{
 	height:300px;
 	background: url('/assets/images/square.png');
 	 background-repeat: no-repeat;
     background-position: 50% 20%; 
-	border-radius:50%;
 	background-size: contain;
 	text-align:center;
+
 }
 
 h2.profile-header {
