@@ -35,23 +35,38 @@ h2.dead {
 	color:rgb(240, 69, 69);
 }
 
+h2.phrase {
+	font-size:18px;
+}
 span.badge.good {
-	font-size:50px;
 	background-color: #0BD269;
 	border-radius:50%;
-	line-height:40px;
-	font-size:32px;
+	line-height:20px;
+	font-size:18px;
 }
 
 span.badge.bad {
-	font-size:50px;
 	background-color: rgb(240, 69, 69);
 		border-radius:50%;
-	line-height:40px;
-	font-size:32px;
+	line-height:20px;
+	font-size:18px;
 }
 
+@media (min-width: 992px) { 
+	h2.phrase {
+		font-size:32px;
+	}
+	span.badge.good {
+		font-size:32px;
+		line-height:40px;
+	}
 
+	span.badge.bad {
+		font-size:32px;
+		line-height:40px;
+
+	}
+}
 /** PROFILES TRIALS CSS **/
 .profile-trial span.glyphicon.glyphicon-star{
 	color:#111;
