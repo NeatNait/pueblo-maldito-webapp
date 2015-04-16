@@ -16,30 +16,13 @@ angular.module('puebloMalditoWebappApp')
       });
     });
 
-    $scope.delete = function(user) {
-      var deleteUser = $window.confirm('Are you absolutely sure you want to delete?');
-      if (deleteUser) {
-        User.remove({ id: user._id });
-          angular.forEach($scope.users, function(u, i) {
-          if (u === user) {
-            $scope.users.splice(i, 1);
-          }
-        });
-      }
-    };
-
-    $scope.register = function(form) {
+    $scope.add = function(form) {
       $scope.submitted = true;
 
       if(form.$valid) {
 
         var user = $scope.user;
-        /*Auth.createUser({
-          name: $scope.user.name,
-          email: $scope.user.email,
-          password: $scope.user.password
-        })*/
-        User.save(user,
+        user.$save(
           function(data) {
             $scope.users = User.query();
             $scope.user = {role:'user'};
@@ -58,6 +41,14 @@ angular.module('puebloMalditoWebappApp')
             });
         });
       }
+    };
+
+    $scope.edit = function (user) {
+      $scope.user = user;
+    };
+
+    $scope.delete = function(user) {
+      $scope.user = {role:'user'};
     };
 
   });

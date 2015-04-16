@@ -1,0 +1,36 @@
+<section class="detail-list">
+  <div class="input-group">
+    <input type="text" class="form-control" placeholder="Search for..." ng-model="searchElement">
+    <span class="input-group-btn">
+      <button class="btn btn-default" type="button">Search!</button>
+    </span>
+  </div>
+
+  <br>
+
+  <ul class="list-group">
+    <li class="list-group-item" ng-repeat="element in elements | orderBy: 'name' | filter:searchElement ">
+      <div class="row">
+
+        <div class="col-xs-10">
+          <a ui-sref="^.detail({trialId: element._id})"><strong>{{element.name}}</strong><br></a>
+          <span class="text-muted">{{element.info || '&nbsp'}}</span>
+          <div>
+            <span ng-repeat="(key,value) in element.stats" class="badge progress-bar-success ng-binding" ng-class="{
+                'progress-bar-danger' : value < 0,
+                'progress-bar-warning' : !value,
+              }">
+              {{key}} {{value}}
+            </span>
+          </div>
+        </div>
+
+        <div class="col-xs-2 text-right" ng-show="{{showControls}}">
+          <button type="button" class="btn btn-sm btn-success" ng-click="edit(element)"><span class="glyphicon glyphicon-edit"></span></button>
+          <button type="button" class="btn btn-sm btn-danger" ng-click="delete(element)"><span class="glyphicon glyphicon-trash"></span></button>
+        </div>
+
+      </div>
+    </li>
+  </ul>
+</section>
