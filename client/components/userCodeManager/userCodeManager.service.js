@@ -5,10 +5,10 @@
     .factory('userCodeManager', userCodeManager);
 
   function userCodeManager() {
-    
+
     var service = {
       calculateDigit : calculateDigit,
-      checkDigit : checkDigit,
+      checkDigit : checkDigit
     };
 
     return service;
@@ -38,7 +38,7 @@
 
       return calculateDigit(originalNumber) === controlDigit;
     }
-    
+
   }
 
 })();
