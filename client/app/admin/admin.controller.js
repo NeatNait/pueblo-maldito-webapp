@@ -21,9 +21,7 @@
       activate();
 
       function activate () {
-        vm.user = new User();
-        vm.user.role = 'user';
-
+        resetUser();
         vm.users = User.query(addUserHashChar);
       }
 
@@ -40,12 +38,13 @@
 
         if(vm.form.$valid) {
           vm.user.$save(processData, handleErrors);
+          angular.element('form input:first').focus();
         }
       }
 
       function processData(data) {
         vm.users = User.query();
-        vm.user = {role:'user'};
+        resetUser();
         vm.form.$setPristine();
         vm.form.$setUntouched();
         vm.submitted = false;
@@ -67,6 +66,10 @@
       }
 
       function deleteUser(user) {
+        resetUser();
+      }
+
+      function resetUser(){
         vm.user = new User();
         vm.user.role = 'user';
       }

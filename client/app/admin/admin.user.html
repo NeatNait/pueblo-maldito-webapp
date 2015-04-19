@@ -11,7 +11,7 @@
           <label>Name</label>
 
           <input type="text" name="name" class="form-control" ng-model="vm.user.name"
-                 required/>
+                 required autofocus/>
           <p class="help-block" ng-show="vm.form.name.$error.required && vm.submitted">
             A name is required
           </p>
@@ -51,7 +51,7 @@
           <label>Role</label>
           <br>
           <div class="btn-group">
-              <label class="btn btn-success" ng-model="vm.user.role" btn-radio="'user'" uncheckable>user</label>
+              <label class="btn btn-success" ng-model="vm.user.role" btn-radio="'user'"  uncheckable>user</label>
               <label class="btn btn-success" ng-model="vm.user.role" btn-radio="'staff'" uncheckable>staff</label>
               <label class="btn btn-success" ng-model="vm.user.role" btn-radio="'admin'" uncheckable>admin</label>
           </div>
@@ -64,7 +64,6 @@
 
           <input type="password" name="password" class="form-control" ng-model="vm.user.password"
                  ng-minlength="3"
-                 required
                  mongoose-error/>
           <p class="help-block"
              ng-show="(vm.form.password.$error.minlength || vm.form.password.$error.required) && vm.submitted">

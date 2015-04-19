@@ -137,6 +137,15 @@ UserSchema
   .pre('save', function(next) {
     if (!this.isNew) return next();
 
+    /* Blank password new user */
+    if(!validatePresenceOf(this.hashedPassword)){
+
+      this._password = createRandomPassword();
+      this.salt = this.makeSalt();
+      this.hashedPassword = this.encryptPassword(this._password);
+
+    }
+
     if (!validatePresenceOf(this.hashedPassword) && authTypes.indexOf(this.provider) === -1)
       next(new Error('Invalid password'));
     else
@@ -181,5 +190,10 @@ UserSchema.methods = {
     return crypto.pbkdf2Sync(password, salt, 10000, 64).toString('base64');
   }
 };
+
+
+function createRandomPassword(){
+  return Math.random().toString(36).substring(7);
+}
 
 module.exports = mongoose.model('User', UserSchema);
