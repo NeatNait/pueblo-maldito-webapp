@@ -8,6 +8,9 @@
 
   function graphManager(User, Trial, $q) {
 
+    var usersData,
+        trialsData;
+
     // Public API here
     var service = {
       reloadData : reloadData,
@@ -16,26 +19,19 @@
       usersGraph : usersGraph
     };
 
-
-    var users,
-        trials;
-
     return service;
 
     /////////////
 
-
     function reloadData () {
       var defered = $q.defer();
 
-      $q.when(Trial.query().$promise).then(function (u, t) {
+      $q.all([User.query().$promise, Trial.query().$promise]).then(function (data) {
 
-        users = u;
-        trials = u;
-        //console.log(argument);
-        //return ;
+        usersData = data[0];
+        trialsData = data[1];
 
-        defered.resolve(u, t);
+        defered.resolve(data);
       });
 
       return defered.promise;
@@ -44,7 +40,7 @@
 
     function average(statName) {
 
-      var usersAlive = _.filter(users, alive),
+      var usersAlive = _.filter(usersData, alive),
           stats = _.pluck(usersAlive, 'stats'),
           selectedStats = _.pluck(stats, statName),
           sumSelectedStats = _.sum(selectedStats);
@@ -62,9 +58,9 @@
           checkins = [],
           labels = [];
 
-      var trials = _.sortBy(trials, 'name');
+      var trialsOrdered = _.sortBy(trialsData, 'name');
 
-      _.each(trials, getPartition);
+      _.each(trialsOrdered, getPartition);
 
       return {
         data : [checkins, passed],
