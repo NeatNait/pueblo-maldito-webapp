@@ -14,24 +14,25 @@
     vm.trialsLabels;
     vm.trialsSeries;
     vm.trialsData;
-    vm.trialsColours = trialsColours;
+    vm.trialsColours;
 
     activate();
 
     function activate () {
+
+      vm.trialsColours = [
+        //'#97BBCD', // blue
+        //'#DCDCDC', // light grey
+        '#4D5360',  // dark grey
+        //'#F7464A', // red
+        '#46BFBD', // green
+        '#FDB45C', // yellow
+        '#949FB1' // grey
+      ];
+
       $interval(reloadData, 1000 * 3);
       reloadData();
     }
-
-    var trialsColours = [
-      //'#97BBCD', // blue
-      //'#DCDCDC', // light grey
-      '#4D5360',  // dark grey
-      //'#F7464A', // red
-      '#46BFBD', // green
-      '#FDB45C', // yellow
-      '#949FB1' // grey
-    ];
 
     function reloadData() {
       graphManager.reloadData().then(function (data) {
