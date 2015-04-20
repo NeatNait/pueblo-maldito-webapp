@@ -15,7 +15,6 @@
         <div class="col-xs-10">
           <a ui-sref="^.detail({trialId: element._id})"><strong>{{element.name}}</strong><br></a>
           <span class="text-muted">{{element.info || '&nbsp'}}</span>
-          <span class="text-muted">{{element.type || '&nbsp'}}hola</span>
           <div>
             <span ng-repeat="(key,value) in element.stats" class="badge progress-bar-success ng-binding" ng-class="{
                 'progress-bar-danger' : value < 0,

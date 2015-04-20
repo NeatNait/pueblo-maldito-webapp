@@ -116,13 +116,13 @@ exports.userByCode = function(req, res, next) {
 
   User.findOne({
     code : req.params.code
-  },'-salt -hashedPassword -name -email', function(err, user) {   
+  },'-salt -hashedPassword -name -email', function(err, user) {
   })
   .populate('trials trials.trial')
   .exec(function (err, user) {
     if (err) return next(err);
     if (!user) return res.json(401);
-    res.json(user); 
+    res.json(user);
   });
 };
 
@@ -165,7 +165,13 @@ exports.completeTrial = function(req, res, next) {
 
         if (err || !trial) return res.send(404);
 
-        if(trial.active){
+        //TODO : get this before the trial query, and implement the errors in trials.detail.controller.js
+        if (user.stats.lives <= 0){
+          res.send(200, {user:user, trial:trial});
+        }
+
+
+        else if(trial.active){
 
           //stats.toObject() is needed to cast model to obj
           user.stats = updateStatsByTrial(user.stats.toObject(), trial.stats.toObject());

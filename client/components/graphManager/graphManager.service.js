@@ -52,13 +52,14 @@
       }
     }
 
-    function trialsGraph () {
+    function trialsGraph (type) {
 
       var passed = [],
           checkins = [],
           labels = [];
 
-      var trialsOrdered = _.sortBy(trialsData, 'name');
+      var trialType = _.filter(trialsData, filterByType);
+      var trialsOrdered = _.sortBy(trialType, 'name');
 
       _.each(trialsOrdered, getPartition);
 
@@ -77,6 +78,11 @@
       function filterByStatus (user) {
         return user.status === 'passed';
       }
+
+      function filterByType (trial) {
+        return trial.type === type;
+      }
+
     }
 
     function usersGraph () {

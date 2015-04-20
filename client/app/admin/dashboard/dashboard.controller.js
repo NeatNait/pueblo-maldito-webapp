@@ -87,7 +87,8 @@
 
         vm.sanityAverage = graphManager.average('sanity').toFixed(2);
 
-        var trialsData = graphManager.trialsGraph();
+        /* Trials */
+        var trialsData = graphManager.trialsGraph('Trial');
         vm.trialsLabels = trialsData.labels;
         vm.trialsSeries = ['Checkins', 'Passed'];
         vm.trialsData = trialsData.data;
@@ -95,7 +96,23 @@
         vm.totalCheckins =  _.sum(trialsData.data[0]);
         vm.totalPassed =  _.sum(trialsData.data[1]);
 
+        /* Deaths */
+        var deathsData = graphManager.trialsGraph('Death');
+        vm.deathsLabels = deathsData.labels;
+        vm.deathsSeries = ['Death'];
+        vm.deathsData = [deathsData.data[0]];
 
+        vm.totalDeaths = _.sum(deathsData.data[0]);
+
+        /* Awards */
+        var awardsData = graphManager.trialsGraph('Award');
+        vm.awardsLabels = awardsData.labels;
+        vm.awardsSeries = ['Checkins', 'Passed'];
+        vm.awardsData = awardsData.data;
+
+        vm.totalAwards = _.sum(awardsData.data[0]);
+
+        /* Sanity */
         vm.data[0].push(vm.sanityAverage);
         //vm.data[1].push(Math.random()*90);
         vm.labels.push('');

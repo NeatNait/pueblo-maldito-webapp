@@ -35,8 +35,8 @@
       <div class="col-xs-6">
         <div class="panel">
           <div class="panel-body">
-            <div class="h1 text-primary">000</div>
-            <span class="text-muted text-xs">Lorem ipsum</span>
+            <div class="h1 text-primary">{{vm.totalAwards}}</div>
+            <span class="text-muted text-xs">Awards</span>
             <span class="bottom text-right w-full">
               <i class="fa fa-child text-muted m-r-sm"></i>
             </span>
@@ -82,8 +82,8 @@
       <div class="col-xs-12">
         <div class="panel">
           <div class="panel-body">
-            <div class="h1 text-primary">000</div>
-            <span class="text-muted text-xs">Lorem ipsum</span>
+            <div class="h1 text-primary">{{vm.totalDeaths}}</div>
+            <span class="text-muted text-xs">Deaths!</span>
             <span class="bottom text-right w-full">
               <i class="fa fa-child text-muted m-r-sm"></i>
             </span>
@@ -114,15 +114,29 @@
 
   <div class="col-md-12">
     <div class="panel wrapper">
-      <h4 class="font-thin m-t-none m-b text-muted">Trials</h4>
-      <canvas id="trials" class="chart chart-bar"
-        data="vm.trialsData"
-        labels="vm.trialsLabels"
-        colours="vm.trialsColours"
-        series="vm.trialsSeries"
+      <h4 class="font-thin m-t-none m-b text-muted">Deaths</h4>
+      <canvas id="deaths" class="chart chart-bar"
+        data="vm.deathsData"
+        labels="vm.deathsLabels"
+        colours="vm.deathsColours"
+        series="vm.deathsSeries"
         legend="true">
       </canvas>
     </div>
   </div>
+
+  <div class="col-md-12">
+    <div class="panel wrapper">
+      <h4 class="font-thin m-t-none m-b text-muted">Awards</h4>
+      <canvas id="awards" class="chart chart-bar"
+        data="vm.awardsData"
+        labels="vm.awardsLabels"
+        colours="vm.awardsColours"
+        series="vm.awardsSeries"
+        legend="true">
+      </canvas>
+    </div>
+  </div>
+
 
 </div>
