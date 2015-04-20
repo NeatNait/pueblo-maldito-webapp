@@ -16,6 +16,11 @@
     vm.trialsData;
     vm.trialsColours;
 
+    //TODO : deleteme
+    vm.labelsDoughnut = ["Alive", "Unknow", "Dead"];
+    vm.dataDoughnut = [800, 100, 200];
+
+
     activate();
 
     function activate () {
