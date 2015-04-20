@@ -43,6 +43,9 @@
         vm.trialsLabels = trialsData.labels;
         vm.trialsSeries = ['Passed', 'Failed'];
         vm.trialsData = trialsData.data;
+
+        vm.totalCheckins =  _.sum(trialsData.data[0]);
+        vm.totalPassed =  _.sum(trialsData.data[1]);
       });
     }
 
