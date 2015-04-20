@@ -140,16 +140,18 @@ function createTrials(event){
     console.time('populateTrials');
     console.log('populating trials...');
 
-    var numtrials = 30,
+    var numtrials = 40,
         trials = [];
 
     for (var i = 0; i < numtrials; i++) {
+
       trials.push({
         //name: faker.lorem.sentence(),
         name: faker.hacker.verb() + ' ' + faker.hacker.noun(),
         info: faker.hacker.phrase(),
         //info: faker.lorem.paragraph(),
         active: true,
+        type: i%4 === 0 ? 'Award' : 'Trial',
         stats: {
           sanity: faker.random.number({min:-10, max:10})
         },
@@ -161,6 +163,7 @@ function createTrials(event){
       name: '_Death!',
       info: faker.hacker.phrase(),
       active: true,
+      type: 'Death',
       stats: {
         sanity: -1000,
         lives: -1000

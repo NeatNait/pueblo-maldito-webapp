@@ -27,6 +27,23 @@
         </p>
       </div>
 
+      <!-- TYPE -->
+      <div class="form-group" ng-class="{ 'has-success': form.info.$valid && submitted,
+                                            'has-error': form.info.$invalid && submitted }">
+        <label>Type</label>
+
+        <!--input type="text" name="type" class="form-control" ng-model="trial.type"/-->
+        <select name="type" class="form-control" ng-model="trial.type">
+          <option value="Trial" selected>Trial</option>
+          <option value="Death">Death</option>
+          <option value="Award">Award</option>
+          <option value="Other">Other</option>
+        </select>
+        <p class="help-block" ng-show="form.type.$error.required && submitted">
+          Type is required
+        </p>
+      </div>
+
       <!-- STATS: Sanity -->
       <div class="form-group" ng-class="{ 'has-success': form.sanity.$valid && submitted,
                                             'has-error': form.sanity.$invalid && submitted }">
