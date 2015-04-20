@@ -16,6 +16,35 @@
     vm.trialsData;
     vm.trialsColours;
 
+    vm.yeah = function (points, event) {
+      console.log(points, event)
+    }
+
+    vm.labels = ["January", "February", "March", "April", "May", "June", "July"];
+    vm.series = ['Series A', 'Series B'];
+    vm.data = [
+      []
+    ];
+    vm.options = {
+      animation: false,
+      showScale: false,
+      scaleOverride: true,
+      // ** Required if scaleOverride is true **
+      // Number - The number of steps in a hard coded scale
+      scaleSteps: 15,
+      // Number - The value jump in the hard coded scale
+      scaleStepWidth: 1,
+      // Number - The scale starting value
+      scaleStartValue: 1,
+
+      barShowStroke : false,
+      barValueSpacing: 1,
+
+      showTooltips: false,
+      pointDot: false,
+      //datasetStrokeWidth: 0.5
+    };
+
     //TODO : deleteme
     vm.labelsDoughnut = ["Alive", "Unknow", "Dead"];
     vm.dataDoughnut = [800, 100, 200];
@@ -37,20 +66,44 @@
 
       $interval(reloadData, 1000 * 3);
       reloadData();
+
+
+     /* $interval(function(){
+        vm.data[0].push(Math.random()*90);
+        //vm.data[1].push(Math.random()*90);
+        vm.labels.push('');
+
+        if(vm.data[0].length > 20){
+          vm.labels = vm.labels.slice(1);
+          vm.data[0] = vm.data[0].slice(1);
+        }
+
+      }, 1000 * 3);*/
+
     }
 
     function reloadData() {
       graphManager.reloadData().then(function (data) {
 
-        vm.sanityAverage = graphManager.average('sanity');
+        vm.sanityAverage = graphManager.average('sanity').toFixed(2);
 
         var trialsData = graphManager.trialsGraph();
         vm.trialsLabels = trialsData.labels;
-        vm.trialsSeries = ['Passed', 'Failed'];
+        vm.trialsSeries = ['Checkins', 'Passed'];
         vm.trialsData = trialsData.data;
 
         vm.totalCheckins =  _.sum(trialsData.data[0]);
         vm.totalPassed =  _.sum(trialsData.data[1]);
+
+
+        vm.data[0].push(vm.sanityAverage);
+        //vm.data[1].push(Math.random()*90);
+        vm.labels.push('');
+
+        if(vm.data[0].length > 20){
+          vm.labels = vm.labels.slice(1);
+          vm.data[0] = vm.data[0].slice(1);
+        }
       });
     }
 

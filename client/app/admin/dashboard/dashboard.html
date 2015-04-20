@@ -5,6 +5,21 @@
   <div class="col-md-3">
 
     <div class="row row-sm text-center">
+
+      <div class="col-xs-12">
+        <div class="panel">
+          <div class="panel-body">
+            <canvas id="line" class="chart chart-bar"
+              data="vm.data"
+              labels="vm.labels"
+              legend="false"
+              series="vm.series"
+              options="vm.options">
+            </canvas>
+        </div>
+        </div>
+      </div>
+
       <div class="col-xs-6">
         <div class="panel">
           <div class="panel-body">
@@ -30,10 +45,10 @@
       </div>
 
 
-      <div class="col-xs-12">
+      <div class="col-xs-12 col-sm-6 col-md-12">
         <div class="panel">
           <div class="panel-body">
-            <span class="text-muted text-xs">Average Sanity</span>
+            <span class="text-muted text-xs">Players status</span>
 
             <canvas id="doughnut" class="chart chart-doughnut" data="vm.dataDoughnut"
               labels="vm.labelsDoughnut" legend="true"></canvas>
@@ -85,8 +100,14 @@
     <div class="panel wrapper">
       <div class="panel-body">
         <h4 class="font-thin m-t-none m-b text-muted">Trials</h4>
-        <canvas id="trials" class="chart chart-bar" data="vm.trialsData"
-      labels="vm.trialsLabels" colours="vm.trialsColours"></canvas>
+        <canvas id="trials" class="chart chart-bar"
+          data="vm.trialsData"
+          labels="vm.trialsLabels"
+          colours="vm.trialsColours"
+          series="vm.trialsSeries"
+          legend="true"
+          click="vm.yeah">
+        </canvas>
       </div>
     </div>
   </div>
@@ -94,8 +115,14 @@
   <div class="col-md-12">
     <div class="panel wrapper">
       <h4 class="font-thin m-t-none m-b text-muted">Trials</h4>
-      <canvas id="trials" class="chart chart-bar" data="vm.trialsData"
-    labels="vm.trialsLabels" colours="vm.trialsColours"></canvas>
+      <canvas id="trials" class="chart chart-bar"
+        data="vm.trialsData"
+        labels="vm.trialsLabels"
+        colours="vm.trialsColours"
+        series="vm.trialsSeries"
+        legend="true">
+      </canvas>
+    </div>
   </div>
 
 </div>
