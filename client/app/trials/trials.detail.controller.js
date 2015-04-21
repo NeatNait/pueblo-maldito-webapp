@@ -30,6 +30,7 @@
       vm.submitted = true;
       if(form.$valid) {
         vm.lastUserScanned = false;
+        angular.element('form input:first').focus();
         return true;
       }
       return false;
