@@ -6,12 +6,23 @@
     <div class="col-sm-12">
       <form class="form" name="vm.form" ng-submit="vm.addUser()" novalidate>
 
+        <div class="form-group" ng-class="{ 'has-success': vm.form.code.$valid && vm.submitted,
+                                            'has-error': vm.form.code.$invalid && vm.submitted }">
+          <label>Code</label>
+
+          <input type="text" name="code" class="form-control" ng-model="vm.user.code"
+                 required autofocus/>
+          <p class="help-block" ng-show="vm.form.code.$error.required && vm.submitted">
+            A code is required
+          </p>
+        </div>
+
         <div class="form-group" ng-class="{ 'has-success': vm.form.name.$valid && vm.submitted,
                                             'has-error': vm.form.name.$invalid && vm.submitted }">
           <label>Name</label>
 
           <input type="text" name="name" class="form-control" ng-model="vm.user.name"
-                 required autofocus/>
+                 required/>
           <p class="help-block" ng-show="vm.form.name.$error.required && vm.submitted">
             A name is required
           </p>
@@ -81,7 +92,6 @@
             Postal Code date is required
           </p>
         </div>
-
 
         <div class="form-group">
 
