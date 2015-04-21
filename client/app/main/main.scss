@@ -28,3 +28,30 @@
     margin-top: 70px;
     border-top: 1px solid #E5E5E5;
 }
+
+.container.welcome {
+     height: 100%;
+  width: 100%;
+  position: fixed;
+  top:0;
+  left:0;
+  z-index:-1;
+  background: url('/assets/images/hybrids.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  text-align: center;
+  padding-top:250px;
+}
+
+.welcome .wl {
+    color:white;
+    font-size: 90px;
+    margin-bottom: 20px;
+}
+
+.welcome .pm {
+    color:#0BD269;
+    font-size:110px;
+}
