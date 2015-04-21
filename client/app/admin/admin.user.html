@@ -11,9 +11,17 @@
           <label>Code</label>
 
           <input type="text" name="code" class="form-control" ng-model="vm.user.code"
-                 required autofocus/>
+                 required 
+                 autofocus 
+                 mongoose-error/>
           <p class="help-block" ng-show="vm.form.code.$error.required && vm.submitted">
             A code is required
+          </p>
+          <p class="help-block" ng-show="vm.form.code.$error.mongoose">
+            {{ vm.errors.code }}
+          </p>
+          <p class="help-block" ng-show="vm.form.code.$error.valid">
+            Code is invalid
           </p>
         </div>
 
@@ -33,9 +41,13 @@
           <label>Nickname</label>
 
           <input type="text" name="nickname" class="form-control" ng-model="vm.user.nickname"
-                 required/>
+                 required
+                 mongoose-error/>
           <p class="help-block" ng-show="vm.form.nickname.$error.required && vm.submitted">
             A nickname is required
+          </p>
+          <p class="help-block" ng-show="vm.form.nickname.$error.mongoose">
+            {{ vm.errors.nickname }}
           </p>
         </div>
 
@@ -76,9 +88,16 @@
           <label>DNI</label>
 
           <input type="text" name="dni" class="form-control" ng-model="vm.user.dni"
-                 required/>
+                 required
+                 mongoose-error/>
           <p class="help-block" ng-show="vm.form.dni.$error.required && vm.submitted">
-            DNI date is required
+            DNI is required
+          </p>
+          <p class="help-block" ng-show="vm.form.dni.$error.valid && vm.submitted">
+            DNI is invalid
+          </p>
+          <p class="help-block" ng-show="vm.form.dni.$error.mongoose">
+            {{ vm.errors.dni }}
           </p>
         </div>
 
@@ -93,7 +112,7 @@
           </p>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" ng-class="{ 'has-error': vm.errors.gender && vm.submitted }">
 
           <label>Gender</label>
           <br>
@@ -102,7 +121,9 @@
               <label class="btn btn-success" ng-model="vm.user.gender" btn-radio="'female'" uncheckable>female</label>
               <label class="btn btn-success" ng-model="vm.user.gender" btn-radio="'other'" uncheckable>other</label>
           </div>
-
+          <p class="help-block" ng-show="vm.errors.gender">
+            {{ vm.errors.gender }}
+          </p>
         </div>
 
         <div class="form-group">

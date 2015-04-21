@@ -4,9 +4,9 @@
   angular.module('puebloMalditoWebappApp')
     .controller('AdminCtrl', AdminCtrl);
 
-    AdminCtrl.$inject = ['$http', '$window', 'Auth', 'User']
+    AdminCtrl.$inject = ['$http', '$window', 'Auth', 'User', 'userCodeManager', 'dniManager'];
 
-    function AdminCtrl($http, $window, Auth, User) {
+    function AdminCtrl($http, $window, Auth, User, userCodeManager, dniManager) {
 
       var vm = this;
 
@@ -44,10 +44,16 @@
       function addUser() {
         vm.submitted = true;
 
-        if(vm.form.$valid) {
+        if(validateForm()) {
           vm.user.$save(processData, handleErrors);
           angular.element('form input:first').focus();
         }
+      }
+
+      function validateForm() {
+        vm.form.dni.$setValidity('valid', dniManager.validate(vm.user.dni));
+        vm.form.code.$setValidity('valid', userCodeManager  .checkDigit(vm.user.code));
+        return vm.form.$valid;
       }
 
       function processData(data) {
@@ -64,7 +70,9 @@
 
         // Update validity of vm.form fields that match the mongoose errors
         angular.forEach(err.errors, function(error, field) {
-          vm.form[field].$setValidity('mongoose', false);
+          if(vm.form[field]){
+            vm.form[field].$setValidity('mongoose', false);
+          }
           vm.errors[field] = error.message;
         });
       }
