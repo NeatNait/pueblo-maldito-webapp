@@ -26,7 +26,7 @@ var UserSchema = new Schema({
     default: Date.now
   },
   code: String,
-  born: String,
+  born: Date,
   dni: String,
   cp: Number,
   sex: String,
