@@ -26,6 +26,11 @@ var UserSchema = new Schema({
     default: Date.now
   },
   code: String,
+  born: String,
+  dni: String,
+  cp: Number,
+  sex: String,
+  playedsz: Boolean,
   stats: {
     sanity: {
       type: Number,
