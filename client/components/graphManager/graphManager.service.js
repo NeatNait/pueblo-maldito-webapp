@@ -87,16 +87,34 @@
 
     function usersGraph () {
 
-      var usersAlive = _.filter(users, alive),
+      var usersAlive = _.filter(usersData, alive),
           stats = _.pluck(usersAlive, 'stats'),
-          selectedStats = _.pluck(stats, statName),
-          sumSelectedStats = _.sum(selectedStats);
+          //selectedStats = _.pluck(stats, statName),
+          //sumSelectedStats = _.sum(selectedStats);
+          usersMakedUp;
 
-      return sumSelectedStats/usersAlive.length;
+      usersMakedUp = makedUp();
+
+      return [usersAlive.length,
+              usersData.length-usersAlive.length-usersMakedUp,
+              usersMakedUp];
 
       function alive (user) {
         return user.stats.lives > 0;
       }
+
+      function makedUp() {
+        var trialMakeUP = _.filter(trialsData, filterByMakeUP);
+        if(trialMakeUP[0]){
+          return trialMakeUP[0].users.length;
+        }
+        return 0;
+      }
+
+      function filterByMakeUP (trial) {
+        return trial.name === '_MakeUP';
+      }
+
     }
 
   }

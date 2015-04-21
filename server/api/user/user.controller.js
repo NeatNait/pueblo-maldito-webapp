@@ -166,7 +166,7 @@ exports.completeTrial = function(req, res, next) {
         if (err || !trial) return res.send(404);
 
         //TODO : get this before the trial query, and implement the errors in trials.detail.controller.js
-        if (user.stats.lives <= 0){
+        if (user.stats.lives <= 0 && trial.name !== '_MakeUP'){
           res.send(200, {user:user, trial:trial});
         }
 
@@ -176,13 +176,17 @@ exports.completeTrial = function(req, res, next) {
           //stats.toObject() is needed to cast model to obj
           user.stats = updateStatsByTrial(user.stats.toObject(), trial.stats.toObject());
 
-          var trialStatus;
+          var trialStatus = 'passed';
+
+          /*
           if(user.stats.sanity){
             trialStatus = 'passed';
           }
           else{
             trialStatus = 'failed';
           }
+          */
+
 
           user.trials.push({
             trial: req.body.trialId,

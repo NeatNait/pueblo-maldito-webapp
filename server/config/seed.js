@@ -175,6 +175,19 @@ function createTrials(event){
       event: event
     })
 
+
+    trials.push({
+      name: '_MakeUP',
+      info: faker.hacker.phrase(),
+      active: true,
+      type: 'Other',
+      stats: {
+        sanity: 0,
+        lives: 0
+      },
+      event: event
+    })
+
     Trial.create(trials, function(err, docs) {
       if(err){
         console.log(err);

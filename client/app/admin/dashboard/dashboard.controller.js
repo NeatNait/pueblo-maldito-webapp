@@ -67,6 +67,9 @@
       $interval(reloadData, 1000 * 3);
       reloadData();
 
+      $interval(reloadDataTimeGraphs, 1000 * 120);
+      reloadDataTimeGraphs();
+
 
      /* $interval(function(){
         vm.data[0].push(Math.random()*90);
@@ -85,8 +88,6 @@
     function reloadData() {
       graphManager.reloadData().then(function (data) {
 
-        vm.sanityAverage = graphManager.average('sanity').toFixed(2);
-
         /* Trials */
         var trialsData = graphManager.trialsGraph('Trial');
         vm.trialsLabels = trialsData.labels;
@@ -100,9 +101,9 @@
         var deathsData = graphManager.trialsGraph('Death');
         vm.deathsLabels = deathsData.labels;
         vm.deathsSeries = ['Death'];
-        vm.deathsData = [deathsData.data[0]];
+        vm.deathsData = [deathsData.data[1]];
 
-        vm.totalDeaths = _.sum(deathsData.data[0]);
+        vm.totalDeaths = _.sum(deathsData.data[1]);
 
         /* Awards */
         var awardsData = graphManager.trialsGraph('Award');
@@ -110,19 +111,33 @@
         vm.awardsSeries = ['Checkins', 'Passed'];
         vm.awardsData = awardsData.data;
 
-        vm.totalAwards = _.sum(awardsData.data[0]);
+        vm.totalAwards = _.sum(awardsData.data[1]);
+
+        /* Users */
+        vm.dataDoughnut = graphManager.usersGraph();
+
+      });
+    }
+
+
+    function reloadDataTimeGraphs() {
+      graphManager.reloadData().then(function (data) {
+
+        vm.sanityAverage = graphManager.average('sanity').toFixed(2);
 
         /* Sanity */
         vm.data[0].push(vm.sanityAverage);
         //vm.data[1].push(Math.random()*90);
         vm.labels.push('');
 
-        if(vm.data[0].length > 20){
+        if(vm.data[0].length > 30){
           vm.labels = vm.labels.slice(1);
           vm.data[0] = vm.data[0].slice(1);
         }
+
       });
     }
+
 
   }
 
