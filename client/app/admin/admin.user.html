@@ -134,6 +134,30 @@
           </p>
         </div>
 
+        <div ng-show="vm.isAdmin()">
+          <div class="form-group" ng-class="{ 'has-success': vm.form.stats.lives.$valid && vm.submitted,
+                                              'has-error': vm.form.stats.lives.$invalid && vm.submitted }">
+            <label>Lives</label>
+
+            <input type="text" name="stats.lives" class="form-control" ng-model="vm.user.stats.lives"
+                   />
+            <p class="help-block" ng-show="vm.form.stats.lives.$error.required && vm.submitted">
+             Lives is required
+            </p>
+          </div>
+
+          <div class="form-group" ng-class="{ 'has-success': vm.form.stats.sanity.$valid && vm.submitted,
+                                              'has-error': vm.form.stats.sanity.$invalid && vm.submitted }">
+            <label>Sanity</label>
+
+            <input type="text" name="stats.sanity" class="form-control" ng-model="vm.user.stats.sanity"
+                   />
+            <p class="help-block" ng-show="vm.form.stats.sanity.$error.required && vm.submitted">
+              Sanity is required
+            </p>
+          </div>
+        </div>
+
         <div>
           <button type="submit" class="btn btn-primary">
             <span class="glyphicon glyphicon-floppy-disk"></span>
