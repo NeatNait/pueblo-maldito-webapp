@@ -50,7 +50,7 @@
                                             'has-error': vm.form.born.$invalid && vm.submitted }">
           <label>Born date</label>
           <p class="input-group">
-            <input type="text" class="form-control" datepicker-popup="{{vm.datePicker.format}}" ng-model="vm.user.born" is-open="vm.datePicker.opened" max-date="'2015'" datepicker-options="vm.datePicker.dateOptions" ng-required="true" close-text="Close" />
+            <input type="text" class="form-control" datepicker-popup="{{vm.datePicker.format}}" ng-model="vm.user.born" is-open="vm.datePicker.opened" min-date="'1900'" max-date="'2015'" datepicker-options="vm.datePicker.dateOptions" ng-required="true" close-text="Close" />
             <span class="input-group-btn">
               <button type="button" class="btn btn-default" ng-click="vm.datePicker.open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
             </span>
