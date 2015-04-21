@@ -27,7 +27,8 @@ User.find({}).remove(function() {
       nickname: 'user' + i,
       email: 'user'+i+'@test.com',
       password: 'test',
-      code: i
+      code: i,
+      gender: 'male'
     });
   }
 
@@ -37,7 +38,8 @@ User.find({}).remove(function() {
     name: 'Admin 1',
     email: '1@1.com',
     password: '1',
-    code: 990
+    code: 990,
+    gender: 'male'
   });
 
   users.push({
@@ -46,7 +48,8 @@ User.find({}).remove(function() {
     name: 'Admin a',
     email: 'a@a.a',
     password: '1',
-    code: 995
+    code: 995,
+    gender: 'male'
   });
 
   users.push({
@@ -55,7 +58,8 @@ User.find({}).remove(function() {
     name: 'Admin',
     email: 'admin@admin.com',
     password: 'admin',
-    code: 999
+    code: 999,
+    gender: 'male'
   });
 
   users.push({
@@ -64,7 +68,8 @@ User.find({}).remove(function() {
     name: 'Staff',
     email: 'staff@staff.com',
     password: 'staff',
-    code: 985
+    code: 985,
+    gender: 'male'
   });
 
   users.push({
@@ -73,7 +78,8 @@ User.find({}).remove(function() {
     name: 'Staff 2',
     email: '2@2.com',
     password: '2',
-    code: 980
+    code: 980,
+    gender: 'male'
   });
 
   User.create(users, function(err, docs) {
