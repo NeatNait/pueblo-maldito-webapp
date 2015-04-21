@@ -9,6 +9,14 @@ var UserSchema = new Schema({
   name: String,
   email: { type: String, lowercase: true },
   nickname: String,
+
+  /*personal data*/
+  born: Date,
+  dni: { type: String, lowercase: true },
+  postalCode: Number,
+  gender: {type: String, enum: ['male', 'female', 'other'], required: true},
+  playedSurvivalZombie: { type: Boolean, default: false },
+
   role: {
     type: String,
     default: 'user'
@@ -20,17 +28,13 @@ var UserSchema = new Schema({
   twitter: {},
   google: {},
   github: {},
+
   /* user extension */
   created: {
     type: Date,
     default: Date.now
   },
   code: String,
-  born: Date,
-  dni: String,
-  cp: Number,
-  sex: String,
-  playedsz: Boolean,
   stats: {
     sanity: {
       type: Number,
