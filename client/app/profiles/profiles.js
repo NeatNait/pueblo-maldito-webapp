@@ -4,7 +4,7 @@ angular.module('puebloMalditoWebappApp')
   .config(function ($stateProvider) {
     $stateProvider
       .state('profiles', {
-        url: '/profiles/:code',
+        url: '/p/:code',
         templateUrl: 'app/profiles/profiles.html',
         controller: 'ProfilesCtrl'
       });
