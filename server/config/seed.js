@@ -24,7 +24,7 @@ User.find({}).remove(function() {
     users.push({
       provider: 'local',
       name: faker.name.findName(),
-      nickname: 'user' + i,
+      nickname: faker.internet.userName(),
       email: 'user'+i+'@test.com',
       password: 'test',
       code: i,
