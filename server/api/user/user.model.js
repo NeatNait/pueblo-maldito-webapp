@@ -12,7 +12,7 @@ var UserSchema = new Schema({
 
   /*personal data*/
   born: Date,
-  dni: { type: String, lowercase: true },
+  dni: { type: String, uppercase: true },
   postalCode: Number,
   gender: {type: String, enum: ['male', 'female', 'other'], required: true},
   playedSurvivalZombie: { type: Boolean, default: false },
@@ -34,7 +34,7 @@ var UserSchema = new Schema({
     type: Date,
     default: Date.now
   },
-  code: String,
+  code: {type: Number, unique: true},
   stats: {
     sanity: {
       type: Number,
