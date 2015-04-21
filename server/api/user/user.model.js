@@ -135,6 +135,51 @@ UserSchema
     });
 }, 'The specified email address is already in use.');
 
+// Validate code is not taken
+UserSchema
+  .path('code')
+  .validate(function(value, respond) {
+    var self = this;
+    this.constructor.findOne({code: value}, function(err, user) {
+      if(err) throw err;
+      if(user) {
+        if(self.id === user.id) return respond(true);
+        return respond(false);
+      }
+      respond(true);
+    });
+}, 'The specified code is already in use.');
+
+// Validate nickname is not taken
+UserSchema
+  .path('nickname')
+  .validate(function(value, respond) {
+    var self = this;
+    this.constructor.findOne({nickname: value}, function(err, user) {
+      if(err) throw err;
+      if(user) {
+        if(self.id === user.id) return respond(true);
+        return respond(false);
+      }
+      respond(true);
+    });
+}, 'The specified nickname is already in use.');
+
+// Validate dni is not taken
+UserSchema
+  .path('dni')
+  .validate(function(value, respond) {
+    var self = this;
+    this.constructor.findOne({dni: value}, function(err, user) {
+      if(err) throw err;
+      if(user) {
+        if(self.id === user.id) return respond(true);
+        return respond(false);
+      }
+      respond(true);
+    });
+}, 'The specified dni is already in use.');
+
 var validatePresenceOf = function(value) {
   return value && value.length;
 };
