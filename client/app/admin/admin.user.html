@@ -46,6 +46,66 @@
           </p>
         </div>
 
+        <div class="form-group" ng-class="{ 'has-success': vm.form.born.$valid && vm.submitted,
+                                            'has-error': vm.form.born.$invalid && vm.submitted }">
+          <label>Born date</label>
+          <p class="input-group">
+            <input type="text" class="form-control" datepicker-popup="{{vm.datePicker.format}}" ng-model="vm.user.born" is-open="vm.datePicker.opened" max-date="'2015'" datepicker-options="vm.datePicker.dateOptions" ng-required="true" close-text="Close" />
+            <span class="input-group-btn">
+              <button type="button" class="btn btn-default" ng-click="vm.datePicker.open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+          </p>
+          <p class="help-block" ng-show="vm.form.born.$error.required && vm.submitted">
+            Born date is required
+          </p>
+        </div>
+
+        <div class="form-group" ng-class="{ 'has-success': vm.form.dni.$valid && vm.submitted,
+                                            'has-error': vm.form.dni.$invalid && vm.submitted }">
+          <label>DNI</label>
+
+          <input type="text" name="dni" class="form-control" ng-model="vm.user.dni"
+                 required/>
+          <p class="help-block" ng-show="vm.form.dni.$error.required && vm.submitted">
+            DNI date is required
+          </p>
+        </div>
+
+        <div class="form-group" ng-class="{ 'has-success': vm.form.postalCode.$valid && vm.submitted,
+                                            'has-error': vm.form.postalCode.$invalid && vm.submitted }">
+          <label>Postal Code</label>
+
+          <input type="text" name="postalCode" class="form-control" ng-model="vm.user.postalCode"
+                 required/>
+          <p class="help-block" ng-show="vm.form.postalCode.$error.required && vm.submitted">
+            Postal Code date is required
+          </p>
+        </div>
+
+
+        <div class="form-group">
+
+          <label>Gender</label>
+          <br>
+          <div class="btn-group" name="gender">
+              <label class="btn btn-success" ng-model="vm.user.gender" btn-radio="'male'"  uncheckable>male</label>
+              <label class="btn btn-success" ng-model="vm.user.gender" btn-radio="'female'" uncheckable>female</label>
+              <label class="btn btn-success" ng-model="vm.user.gender" btn-radio="'other'" uncheckable>other</label>
+          </div>
+
+        </div>
+
+        <div class="form-group">
+
+          <label>Played Survival Zombie</label>
+          <br>
+          <div class="btn-group">
+              <label class="btn btn-success" ng-model="vm.user.playedSurvivalZombie" btn-radio="'true'"  uncheckable>true</label>
+              <label class="btn btn-success" ng-model="vm.user.playedSurvivalZombie" btn-radio="'false'" uncheckable>false</label>
+          </div>
+
+        </div>
+
         <div class="form-group" ng-show="vm.isAdmin()">
 
           <label>Role</label>

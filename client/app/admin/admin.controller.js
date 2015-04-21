@@ -18,10 +18,18 @@
       vm.user;
       vm.users;
 
+      vm.datePicker             = {};
+      vm.datePicker.today       = today;
+      vm.datePicker.clear       = clearDatePicker;
+      vm.datePicker.open        = openDatePicker;
+      vm.datePicker.dateOptions = {formatYear: 'yy', startingDay: 1};
+      vm.datePicker.format      = 'dd/MM/yyyy';
+
       activate();
 
       function activate () {
         resetUser();
+        vm.datePicker.today();
         vm.users = User.query(addUserHashChar);
       }
 
@@ -72,6 +80,21 @@
       function resetUser(){
         vm.user = new User();
         vm.user.role = 'user';
+      }
+
+      function today() {
+        vm.datePicker.dt = new Date();
+      }
+
+      function clearDatePicker() {
+        vm.datePicker.dt = null;
+      }
+
+      function openDatePicker($event) {
+        $event.preventDefault();
+        $event.stopPropagation();
+
+        vm.datePicker.opened = true;
       }
 
     }
