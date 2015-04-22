@@ -31,7 +31,7 @@
         var letterDNI = dni.substring(8);
  
         // Si la letra es correcta damos por válido el DNI
-        return getLetter(numbersDNI).toUpperCase() === letterDNI;
+        return getLetter(numbersDNI) === letterDNI.toUpperCase();
       }
    
       return false;

@@ -52,7 +52,7 @@
 
       function validateForm() {
         vm.form.dni.$setValidity('valid', dniManager.validate(vm.user.dni));
-        vm.form.code.$setValidity('valid', userCodeManager  .checkDigit(vm.user.code));
+        vm.form.code.$setValidity('valid', userCodeManager.checkDigit(vm.user.code));
         return vm.form.$valid;
       }
 
