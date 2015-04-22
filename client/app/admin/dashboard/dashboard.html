@@ -1,142 +1,148 @@
 <div class="container-fluid">
 
-<div class="row">
+  <div class="row">
 
-  <div class="col-md-3">
+    <div class="col-md-3">
 
-    <div class="row row-sm text-center">
+      <div class="row row-sm text-center">
 
-      <div class="col-xs-12">
-        <div class="panel">
-          <div class="panel-body">
-            <canvas id="line" class="chart chart-bar"
-              data="vm.data"
-              labels="vm.labels"
-              legend="false"
-              series="vm.series"
-              options="vm.options">
-            </canvas>
-        </div>
-        </div>
-      </div>
-
-      <div class="col-xs-6">
-        <div class="panel">
-          <div class="panel-body">
-            <div class="h1 text-primary">{{vm.sanityAverage}}</div>
-            <span class="text-muted text-xs">Average Sanity</span>
-            <span class="bottom text-right w-full">
-              <i class="fa fa-child text-muted m-r-sm"></i>
-            </span>
+        <div class="col-xs-12">
+          <div class="panel">
+            <div class="panel-body">
+              <canvas id="line" class="chart chart-bar"
+                data="vm.data"
+                labels="vm.labels"
+                legend="false"
+                series="vm.series"
+                options="vm.options">
+              </canvas>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="col-xs-6">
-        <div class="panel">
-          <div class="panel-body">
-            <div class="h1 text-primary">{{vm.totalAwards}}</div>
-            <span class="text-muted text-xs">Awards</span>
-            <span class="bottom text-right w-full">
-              <i class="fa fa-child text-muted m-r-sm"></i>
-            </span>
+        <div class="col-xs-6">
+          <div class="panel">
+            <div class="panel-body">
+              <div class="h1 text-primary">{{vm.sanityAverage}}</div>
+              <span class="text-muted text-xs">Average Sanity</span>
+              <span class="bottom text-right w-full">
+                <i class="fa fa-child text-muted m-r-sm"></i>
+              </span>
+            </div>
           </div>
         </div>
-      </div>
 
-
-      <div class="col-xs-12 col-sm-6 col-md-12">
-        <div class="panel">
-          <div class="panel-body">
-            <span class="text-muted text-xs">Players status</span>
-
-            <canvas id="doughnut" class="chart chart-doughnut" data="vm.dataDoughnut"
-              labels="vm.labelsDoughnut" legend="true"></canvas>
+        <div class="col-xs-6">
+          <div class="panel">
+            <div class="panel-body">
+              <div class="h1 text-primary">{{vm.totalAwards}}</div>
+              <span class="text-muted text-xs">Awards</span>
+              <span class="bottom text-right w-full">
+                <i class="fa fa-child text-muted m-r-sm"></i>
+              </span>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="col-xs-6">
-        <div class="panel">
-          <div class="panel-body">
-            <div class="h1 text-primary">{{vm.totalCheckins}}</div>
-            <span class="text-muted text-xs">Total Checkins</span>
-            <span class="bottom text-right w-full">
-              <i class="fa fa-info-circle text-muted m-r-sm"></i>
-            </span>
+
+        <div class="col-xs-12 col-sm-6 col-md-12">
+          <div class="panel">
+            <div class="panel-body">
+              <span class="text-muted text-xs">Players status</span>
+
+              <canvas id="doughnut" class="chart chart-doughnut" data="vm.dataDoughnut"
+                labels="vm.labelsDoughnut" legend="true"></canvas>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="col-xs-6">
-        <div class="panel">
-          <div class="panel-body">
-            <div class="h1 text-primary">{{vm.totalPassed}}</div>
-            <span class="text-muted text-xs">Total Passed</span>
-            <span class="bottom text-right w-full">
-              <i class="fa fa-check-circle text-muted m-r-sm"></i>
-            </span>
+        <div class="col-xs-6">
+          <div class="panel">
+            <div class="panel-body">
+              <div class="h1 text-primary">{{vm.totalCheckins}}</div>
+              <span class="text-muted text-xs">Total Checkins</span>
+              <span class="bottom text-right w-full">
+                <i class="fa fa-info-circle text-muted m-r-sm"></i>
+              </span>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="col-xs-12">
-        <div class="panel">
-          <div class="panel-body">
-            <div class="h1 text-primary">{{vm.totalDeaths}}</div>
-            <span class="text-muted text-xs">Deaths!</span>
-            <span class="bottom text-right w-full">
-              <i class="fa fa-child text-muted m-r-sm"></i>
-            </span>
+
+        <div class="col-xs-6">
+          <div class="panel">
+            <div class="panel-body">
+              <div class="h1 text-primary">{{vm.totalPassed}}</div>
+              <span class="text-muted text-xs">Total Passed</span>
+              <span class="bottom text-right w-full">
+                <i class="fa fa-check-circle text-muted m-r-sm"></i>
+              </span>
+            </div>
           </div>
         </div>
+        <div class="col-xs-12">
+          <div class="panel">
+            <div class="panel-body">
+              <div class="h1 text-primary">{{vm.totalDeaths}}</div>
+              <span class="text-muted text-xs">Deaths!</span>
+              <span class="bottom text-right w-full">
+                <i class="fa fa-child text-muted m-r-sm"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+
+
+
       </div>
-
-
 
     </div>
+
+    <div class="col-md-9">
+      <div class="panel wrapper">
+        <div class="panel-body">
+          <h4 class="font-thin m-t-none m-b text-muted">Trials</h4>
+          <canvas id="trials" class="chart chart-bar"
+            data="vm.trialsData"
+            labels="vm.trialsLabels"
+            colours="vm.trialsColours"
+            series="vm.trialsSeries"
+            legend="true"
+            click="vm.yeah">
+          </canvas>
+        </div>
+      </div>
+    </div>
+    
   </div>
 
-  <div class="col-md-9">
-    <div class="panel wrapper">
-      <div class="panel-body">
-        <h4 class="font-thin m-t-none m-b text-muted">Trials</h4>
-        <canvas id="trials" class="chart chart-bar"
-          data="vm.trialsData"
-          labels="vm.trialsLabels"
-          colours="vm.trialsColours"
-          series="vm.trialsSeries"
-          legend="true"
-          click="vm.yeah">
+  <div class="row">
+
+    <div class="col-md-6">
+      <div class="panel wrapper">
+        <h4 class="font-thin m-t-none m-b text-muted">Deaths</h4>
+        <canvas id="deaths" class="chart chart-bar"
+          data="vm.deathsData"
+          labels="vm.deathsLabels"
+          colours="vm.deathsColours"
+          series="vm.deathsSeries"
+          legend="true">
         </canvas>
       </div>
     </div>
-  </div>
 
-  <div class="col-md-12">
-    <div class="panel wrapper">
-      <h4 class="font-thin m-t-none m-b text-muted">Deaths</h4>
-      <canvas id="deaths" class="chart chart-bar"
-        data="vm.deathsData"
-        labels="vm.deathsLabels"
-        colours="vm.deathsColours"
-        series="vm.deathsSeries"
-        legend="true">
-      </canvas>
+    <div class="col-md-6">
+      <div class="panel wrapper">
+        <h4 class="font-thin m-t-none m-b text-muted">Awards</h4>
+        <canvas id="awards" class="chart chart-bar"
+          data="vm.awardsData"
+          labels="vm.awardsLabels"
+          colours="vm.awardsColours"
+          series="vm.awardsSeries"
+          legend="true">
+        </canvas>
+      </div>
     </div>
-  </div>
 
-  <div class="col-md-12">
-    <div class="panel wrapper">
-      <h4 class="font-thin m-t-none m-b text-muted">Awards</h4>
-      <canvas id="awards" class="chart chart-bar"
-        data="vm.awardsData"
-        labels="vm.awardsLabels"
-        colours="vm.awardsColours"
-        series="vm.awardsSeries"
-        legend="true">
-      </canvas>
-    </div>
   </div>
-
 
 </div>
