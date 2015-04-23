@@ -1,4 +1,4 @@
-.thing-form {
+/*.thing-form {
     margin: 20px 0;
 }
 
@@ -36,7 +36,7 @@
   top:0;
   left:0;
   z-index:-1;
-  background: url('/assets/images/hybrids.jpg') no-repeat center center fixed;
+  background: url('/assets/images/hybrids-tall.jpg') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -54,4 +54,480 @@
 .welcome .pm {
     color:#0BD269;
     font-size:110px;
+}*/
+
+  html,body{
+    height: 100%;}
+
+@import url(http://fonts.googleapis.com/css?family=Raleway:400,300,200);
+
+  $bright : #0BD269;
+
+#main-view{
+
+  color:white;
+  background: transparent;
+  //padding-top:10rem;
+  //background: rgba(17, 17, 17, 0.48);
+  position: relative;
+
+    font-family: 'Raleway', sans-serif;
+  font-weight: 200;
+  font-size:2rem;
+
+
+  h1,h2,h3,h4,h5{
+    font-family: 'Raleway', sans-serif;
+  }
+
+  h1{
+    font-family: 'Raleway', sans-serif;
+    font-weight: 200;
+    font-size:9rem;
+    text-align: center;
+    font-style: normal;
+
+    /*opacity:0;
+    animation:fadeIn 1s 2s ease forwards;*/
+
+  }
+
+  h2{
+      font-family: 'Raleway', sans-serif;
+    font-weight: 200;
+    font-size:5rem;
+      text-align: center;
+    font-style: normal;
+  }
+
+  .container.animation{
+    opacity:0;
+    animation:fadeIn 1s 2s ease forwards;
+  }
+
+  html {
+    background: #111;
+    font-family: 'Raleway', sans-serif;
+
+
+  }
+
+  html,body{
+    height: 100%;
+    //margin-top:100px;
+  }
+
+  .cover-img{
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top:0;
+    left:0;
+    z-index:-1;
+    background: url('/assets/images/hybrids-tall.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+    opacity:0;
+
+    &.animation{
+      animation:fadeIn 1s ease forwards;
+    }
+  }
+
+
+
+
+
+
+  .black-layer{
+    height: 100%;
+
+    &.animation{
+      animation: toBlack 1s 2s ease forwards;
+    }
+  }
+
+
+
+  input{
+    background: rgba(255, 255, 255, 0.19);
+    border: 1px solid rgba(255, 255, 255, 0.19);
+    padding: 1rem;
+    font-size: 3rem;
+    width: 100%;
+
+    font-family: 'Raleway', sans-serif;
+    font-weight: 200;
+
+  }
+
+  input[type="submit"]{
+    border:1px solid $bright;
+  }
+
+
+  input.comprar-ahora {
+    color: #111;
+    background: rgba(255, 255, 255, 1);
+    padding: 15px 0px;
+    font-size: 3.2rem;
+    width: 100%;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 300;
+    border: 8px solid $bright;
+    border-radius: 15px;
+    box-shadow: $bright 0px 0px 50px 0px;
+    animation: glow 2s ease alternate infinite;
+  }
+
+
+
+  .js-wait-for-image{
+    opacity:0;
+  }
+
+  iframe{
+    width: 720px;
+    height: 650px;
+    display: inline;
+    border:0;
+    text-align: center;
+    overflow: hidden;
+  }
+
+
+  body.modal-open {
+    //margin: 0 !important;
+    //overflow: visible;
+  }
+
+  .modal{
+    .modal-body{
+      text-align: center;
+    }
+  }
+
+
+
+
+  //@media (width lt $screen-xs-min) {
+    @media only screen
+  and (min-device-width : 320px)
+  and (max-device-width : 480px)
+  {
+    //width: $container-sm;
+    .modal{
+      .modal-body{
+        padding:0;
+      }
+    }
+    iframe{
+      transform: scale(0.41);
+      width: 720px;
+      height: 586px;
+      transform-origin: 0 0;
+    }
+  }
+
+
+
+  ul{
+  }
+
+
+  li {
+    display: inline-block;
+    font-family: 'Raleway';
+    font-size: 2.5rem;
+    font-weight: 200;
+    text-transform: uppercase;
+    padding: 3rem 2rem 1rem;
+    margin: 5rem 2rem;
+    border-bottom: 1px solid white;
+    transition: all .5s ease;
+  }
+
+
+
+
+  li:hover {
+    border-bottom: 1px solid $bright;
+  }
+  .modal.fade .modal-dialog{transform:none !important;}
+
+
+  .navbar{
+    transition: all .5s ease;
+  }
+
+  .navbar-nav{
+    display:inline-block;
+    float: none!important;
+  }
+  .nav{
+
+    & li{
+      & a{
+        color:white;
+        &:hover{
+          background-color: transparent;
+        }
+      }
+    }
+  }
+
+  .nav > li > a:hover, .nav > li > a:focus {
+    text-decoration: none;
+    background-color: transparent;
+  }
+
+
+  .navbar-shrink{
+    background-color: #111;
+    //box-shadow: $bright 0px 0px 50px 0px, $bright 0px -30px 55px -35px inset;
+    //border-bottom: 1px $bright;
+    li {
+      /* padding-top: 0; */
+      margin-bottom: 2rem;
+      margin-top: 1rem;
+    }
+  }
+
+  .dark{
+    background: #111; //#657681 //rgba(10, 199, 91, 0.52);
+      /*background: url(../images/hybrids-tall.jpg) no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;*/
+
+    //height: 100%;
+    padding: 10rem 0;
+  }
+
+  .dark.dark-diff{
+    //padding: 5rem 0;
+    padding: 5rem 0 3rem 0;
+  }
+
+  .dark-bot{
+    background: #111; //#657681 //rgba(10, 199, 91, 0.52);
+    padding-bottom: 10rem;
+  }
+
+  .container-big{
+    //height: 100%;
+    padding-bottom: 20rem;
+  }
+
+  .history{
+
+    > h2{
+      margin-bottom:10rem;
+    }
+
+    p{
+      padding:0 3.5rem;
+      strong{
+        color: $bright;
+      }
+    }
+  }
+
+
+  .tab-pane{
+    padding-top:5rem;
+    p{
+      padding-left:0;
+      padding-right:0;
+    }
+    h3{
+      font-size:3rem;
+      font-weight:200;
+      font-style:normal;
+      margin-bottom: 4rem;
+    }
+  }
+
+  .nav-tabs{
+    margin-top:5rem;
+  }
+
+  .nav-tabs>li {
+    float: left;
+    margin-bottom: -1px;
+  }
+
+  .nav-tabs > li > a {
+    border-radius: 0;
+    transition:all .5s ease;
+  }
+
+  .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+    color: #555;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-bottom-color: transparent;
+    cursor: default;
+  }
+  .nav-tabs>li>a {
+    border-radius: 0;
+    transition: all .5s ease;
+  }
+
+  .thumbnail {
+    display: block;
+    padding: 20px 0px 0px 0px;
+    margin-bottom: 20px;
+    line-height: 1.42857;
+    background-color: transparent;
+    border: 1px solid #dddddd;
+    border-radius: 0px;
+    transition: all 0.2s ease-in-out;
+    height:465px;
+    border-color:$bright;
+  }
+
+  .thumbnail .caption {
+    padding: 9px;
+    color: white;
+  }
+
+  .caption{
+    h3{
+      padding:1rem 2rem;
+    }
+  }
+
+
+  .btn-default {
+    color: #111;
+    background-color: white;
+    //border-color: #0EEA3A;
+    border-color: $bright;
+    border-width: 3px;
+    transition: all .25s ease;
+
+    &:hover {
+      // background: #0EEA3A;
+      // color: white;
+      // border-color: white;
+
+      //background: #3C3C3C;
+      color: #111;
+
+      border-color: $bright;
+      box-shadow: $bright 0px 0px 20px 0px;
+      //animation: glow 2s ease alternate infinite;
+
+    }
+  }
+
+
+  li.rules-list {
+    text-transform: none;
+    padding: 0;
+    margin: 10px 0;
+    border-bottom: none;
+    font-size:2rem;
+  }
+
+
+  .rules-list strong, li.rules-list i, .pueblo-maldito strong{
+      color: #0BD269;
+  }
+
+
+  b,
+  strong {
+    font-weight: 200;
+  }
+
+  .transparente {
+     padding: 10rem 0;
+  }
+  .modal-footer-text {
+    color:black;
+  text-align:left;
+  font-size:15px;
+  }
+
+  .text-center {
+    text-align: center;
+
+  }
+
+  .mini-footer {
+    font-size:12px;
+    text-align:center;
+  }
+
+  .dark-diff .container.history.animation a {
+    color:#0BD269;
+  }
+
+  /* Smartphones (portrait) ----------- */
+  @media only screen and (max-width : 760px) {
+    body{
+      font-size:1.8rem;
+    }
+
+    .navbar-nav {
+      margin: 0;
+    }
+    li {
+      padding: 0;
+      margin: 0;
+    }
+
+    .container {
+      margin-top:50px;
+    }
+
+    h2
+    {
+      font-size:4rem;
+    }
+
+    h1 {
+      font-size:6rem;
+    }
+
+    .history p {
+    padding:0;
+    }
+  }
+
+
 }
+
+ @keyframes fadeIn{
+    0%{
+      opacity: 0;
+    }
+    100%{
+      opacity: 1;
+    }
+  }
+
+
+  @keyframes toBlack{
+    0%{
+      background: rgba(17, 17, 17, 0.0);
+    }
+    100%{
+      background: rgba(17, 17, 17, 0.48);
+    }
+  }
+
+    @keyframes glow{
+    0%{
+      box-shadow: $bright 0px 0px 50px 0px;
+    }
+    100%{
+      box-shadow: $bright 0px 0px 90px 0px;
+    }
+  }

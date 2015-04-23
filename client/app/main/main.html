@@ -1,31 +1,305 @@
-<div ng-include="'components/navbar/navbar.html'"></div>
+<div id="main-view">
 
+  <nav class="navbar navbar-defaults navbar-fixed-top">
+    <div class="containers">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header page-scroll">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="true">Menú
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <!--a class="navbar-brand page-scroll" href="#page-top">Pueblo Maldito</a-->
+      </div>
 
-<br>
-<br>
-<br>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="navbar-collapse collapse text-center" id="bs-example-navbar-collapse-1" aria-expanded="true">
+        <ul class="nav navbar-nav navbar-left">
+          <li class="">
+            <a class="page-scroll" data-toggle="modal" data-target="#comprar-entradas" href="#entradas">Entradas</a>
+          </li>
+          <li class="hidden active">
+            <a href="#page-top"></a>
+          </li>
+          <li class="">
+            <a class="page-scroll" href="#historia">Historia</a>
+          </li>
+          <li class="">
+            <a class="page-scroll" href="#reglas">Reglas</a>
+          </li>
+          <li class="">
+            <a class="page-scroll" href="#patrocinadores">Patrocinadores</a>
+          </li>
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+  </nav>
 
-<div class="container welcome">
+  <div class="cover-img js-wait-for-image">
+    <div class="black-layer js-wait-for-image">
 
-  <!--div class="col-md-6">
-    <canvas id="line" class="chart chart-line" data="data"
-      labels="labels" legend="true" series="series"
-      click="onClick">
-    </canvas>
-  </div
-
-  <div class="col-md-6">
-    <canvas id="doughnut" class="chart chart-doughnut" data="dataDoughnut"
-      labels="labelsDoughnut" legend="true"></canvas>
+    </div>
   </div>
 
-  <div class="col-md-12">
-    <canvas id="bar" class="chart chart-bar" data="dataBars"
-      labels="labelsBars" colours="coloursBars"></canvas>
+  <div class="container container-big js-wait-for-image">
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h2>Vive la llamada de Cthulhu en...</h2>
+    <h1 class="pueblo-maldito"><strong>Pueblo Maldito<strong></h1>
+    <h2>Fuentidueña de Tajo. 25 Abril 2015</h2>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <!--div class="row">
+      <div class="col-lg-6 col-lg-offset-1">
+        <input type="text" placeholder="¿Cúal es tu correo?">
+      </div>
+      <div class="col-lg-4">
+        <input type="submit" value="SUSCRÍBETE" data-toggle="modal" data-target="#comprar-entradas">
+      </div>
+    </div-->
+    <div class="row">
+      <div class="col-lg-6 col-lg-offset-3">
+        <input type="submit" class="comprar-ahora" value="COMPRA TU ENTRADA AHORA" data-toggle="modal" data-target="#comprar-entradas">
+      </div>
+    </div>
+
   </div>
-  -->
-   <div class="col-md-12">
-    <h1 class="wl">Bienvenido a </h1>
-    <h1 class="pm">Pueblo Maldito</h1>
-   </div>
+
+  <div class="dark" id="que-es">
+    <div class="container history animation">
+      <h2>¿Qué es Pueblo Maldito?</h2>
+      <p>
+        Es un <strong>juego real</strong>. <strong>Multiaventura y teatro interactivo en vivo</strong>, en el que monstruosas criaturas  os perseguirán por <strong>todo un pueblo toda una noche</strong> intentando mataros o convertiros en una de ellas.
+        <strong>Destruye la maldición</strong> superando las dificultades que pondrán a prueba tu físico y tu mente mientras descubres una increíble historia de la que <strong>tú y tus amigos sois protagonistas</strong>.
+        <strong>Vuestras elecciones morales</strong> cambiarán en directo la trama, pero <strong> sobrevivir</strong> hasta el amanecer no será nada fácil. Esta experiencia es lo más parecido a <strong>vivir en el mundo real un videojuego open world</strong> o una película. Auténtica aventura <strong>Survival Horror</strong>.
+      </p>
+
+      <p>
+        El juego está basado en obras de <strong>Lovecraft</strong> como La Sombra Sobre Innsmouth, que detallaremos más adelante. ¿No es genial? Pues aún hay más: Tenemos más de 8 horas de juego, cinco grandes Premios, Logros desbloqueables y muchas sorpresas a lo largo de la noche. ¿A qué esperas para comprar tu entrada?
+      </p>
+    </div>
+  </div>
+
+  <div class="transparente" id="historia">
+    <div class="container js-wait-for-image text-justify history">
+
+      <h2>La historia de Innsmouth se repite</h2>
+
+      <div class="col-lg-6">
+        <p>
+          Se oyen rumores sobre gente desaparecida y extrañas deformaciones que afectan a los vecinos de un pequeño pueblo de la Comunidad de Madrid llamado <strong>Fuentidueña de Tajo</strong>. Incluso hay rumores sobre sacrificios humanos para invocar monstruos desde que llegó la <i>"Orden Esotérica de Dagón"</i>. Una desconocida secta religiosa que adora a un supuesto Dios acuático durmiente al que llaman <strong>El Gran Cthulhu</strong>.
+          <br>
+          <br>
+          <!--Fotografía de la imagen de un sueño sobre la semilla estelar de Chtulhu con tentáculos y boca de monstruo.-->
+          Nadie sabe por qué una secta propia del mar ha elegido un pueblo tan lejos de la costa para instalarse, quizá
+          estrecha relación del pueblo con el agua del Tajo, río que lo bordea. Lo que está claro es que los cultistas de Cthulhu cada vez tienen más adeptos en el pueblo debido a las riquezas que obtienen de sus seguidores.<br><br>
+        </p>
+      </div>
+      <div class="col-lg-6">
+        <p>
+          Muchas personalidades influyentes de la localidad se han convertido proclamando que su Dios premiará con vida eterna a los hijos de quienes se les unan, y que los infieles serán devorados cuando "Los hijos de Padre Dagón y Madre Hydra despierten plenamente y se levanten para exigir el tributo que El Gran Cthulhu anhela".
+          <br>
+          <br>
+          Los medios no parecen conocer a qué se refieren exactamente estas declaraciones, pero se cuenta que <strong>todo sucederá muy pronto</strong>, en el gran evento que se planea en el pueblo y al cual TÚ y algunos de tus amigos (entre varios cientos de personas) habéis sido invitados. No sabes si <strong>La Orden Esotérica de Dagón</strong> son una panda de locos o si esa noche realmente será el fin del mundo. Tampoco entiendes qué hay en ese lugar que llama tan poderosamente tu atención. Pero lo que sí sabes, es que sea el fin de la humanidad o no, no puedes perdértelo... o tratar de impedirlo si fuera necesario.
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="dark-bot" id="reglas">
+    <div class="container history animation">
+      <div role="tabpanel">
+         <!-- Nav tabs -->
+         <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#reglas-generales" aria-controls="reglas-generales" role="tab" data-toggle="tab"> Importante</a></li>
+            <li role="presentation" class=""><a href="#funcionamiento" aria-controls="funcionamiento" role="tab" data-toggle="tab">¿Cómo jugar?</a></li>
+            <li role="presentation" class=""><a href="#evento" aria-controls="evento" role="tab" data-toggle="tab">Evento</a></li>
+            <li role="presentation" class=""><a href="#normas" aria-controls="normas" role="tab" data-toggle="tab">¡No!</a></li>
+            <li role="presentation" class=""><a href="#faq" aria-controls="faq" role="tab" data-toggle="tab">FAQ</a></li>
+         </ul>
+         <!-- Tab panes -->
+         <div class="tab-content text-justify">
+            <div role="tabpanel" class="tab-pane fade active in" id="reglas-generales">
+               <h3>Reglas Generales</h3>
+               <ul class="fa-ul">
+                  <li class="rules-list"> <i class="fa-li fa fa-check-circle-o"></i> <strong>El escenario de juego será todo el pueblo</strong> y algunas localizaciones interiores que descubrirás durante la partida, que dura <strong>toda la noche </strong>(8 horas). </li>
+                  <li class="rules-list"> <i class="fa-li fa fa-check-circle-o"></i>Los <strong>primeros ganadores</strong> del juego obtendrán un <strong>premio</strong> que se mantendrá en secreto hasta su entrega pública. También entregaremos pequeños premios ganados durante el transcurso de la partida e incluso <strong>AWARDS</strong> por logros en el juego que serán acumulables entre ediciones y te permitirán <strong>ganar entradas gratis</strong>. Los premios son sólo una excusa para darle aún más emoción a la experiencia que váis a vivir, la verdadera recompensa es <strong>sobrevivir toda la noche</strong>. </li>
+                  <li class="rules-list"> <i class="fa-li fa fa-check-circle-o"></i> Puedes <strong>abandonar cuando quieras</strong>, pero nadie puede ganar definitivamente el juego y llevarse un premio antes de la <strong>escena final</strong>. Aunque alguien resuelva todo el juego, eso no influye en la partida de los demás, que también podrán completarlo sin obtener premio. Aún sin premio, <strong>es una experiencia que lo vale en sí misma</strong> y dura hasta el final para todos. </li>
+                  <li class="rules-list"> <i class="fa-li fa fa-check-circle-o"> </i>Las reglas se explicarán detalladamente en la zona de bienvenida, y las tendrás en tu Diario de Investigador. </li>
+               </ul>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="funcionamiento">
+               <h3>Funcionamiento del juego</h3>
+               <ul class="fa-ul">
+                  <li class="rules-list"> <i class="fa-li fa fa-check-circle-o"></i> Cada jugador, personaje o monstruo lleva una <strong> prenda identificativa </strong> claramente visible y sin lugar a error, incluso por personas daltónicas, además de su entrada/Diario de Investigador coleccionable. </li>
+                  <li class="rules-list"> <i class="fa-li fa fa-check-circle-o"></i> Tras la escena inicial, sectarios y monstruos de varios tipos intentarán darte caza por las calles y localizaciones, algunos tienen <strong>comportamientos especiales</strong>, como correr, aunque la mayoría sólo pueden caminar. </li>
+                  <li class="rules-list"> <i class="fa-li fa fa-check-circle-o"></i> Si un monstruo te toca, o un personaje (maligno o no) te elimina del juego, irás a la zona de maquillaje para convertirte en uno de los monstruos y saldrás en un grupo guiado por un miembro de la organización. Los convertidos irán siempre en grupos y a diferencia de otros real game, los monstruos jugadores de este grupo SÍ pueden hablar entre ellos. ¿Una forma diferente de hacer malignos amigos? </li>
+                  <li class="rules-list"> <i class="fa-li fa fa-check-circle-o"></i> Si te matan, <strong>muere con estilo </strong> gritando de horror en tus 35sg de fama, será más gratificante para todos :). </li>
+                  <li class="rules-list"> <i class="fa-li fa fa-check-circle-o"></i> Los jugadores <strong>no podrán matar </strong>a ningún monstruo a no ser que en alguna localización se os indique lo contrario (en cuyo caso se os proporcionarán los medios y la forma de usarlos) Aún así, la violencia física real está totalmente fuera de este juego y se espera que os comportéis como personas y monstruos civilizados. </li>
+                  <li class="rules-list"> <i class="fa-li fa fa-check-circle-o"></i> En Pueblo Maldito habrá interacciones que pondrán a prueba tu capacidad física, mental e incluso tu moralidad. Aunque estar en buena forma física y mental te será de gran ayuda para sobrevivir y resolver el juego, ESTO NO ES UNA GYMCANA O UN CONCURSO DE CONOCIMIENTOS, por lo que una persona promedio, sin problemas graves de salud puede participar y ganar perfectamente. No obstante te avisamos de que tendrás que caminar bastante y <strong>correr algunas veces huyendo para salvar la vida</strong>, por lo que es muy recomendable llevar calzado de trekking o running (senderismo o correr :) y ropa cómoda para moverte y con la que te puedas manchar. (Te vamos a poner fino). </li>
+                  <li class="rules-list"> <i class="fa-li fa fa-check-circle-o"></i> A través de sucesos en las diversas localizaciones, eventos en la calle y encuentros aleatorios, serás uno de los <strong> protagonistas </strong> de una historia alucinante y tus <strong>decisiones influirán directamente</strong> en los acontecimientos generales para todos los demás jugadores. Estas decisiones, interacciones y logros <strong>quedarán registrados</strong> por la organización en tu Diario de Investigador y en tu <strong>perfil online</strong> (no te hará falta el móvil para jugar). </li>
+                  <li class="rules-list"> <i class="fa-li fa fa-check-circle-o"></i> Además, habrá una zona en él destinada a la <strong>Cordura</strong>. Algunos sucesos durante el juego pueden hacerte<strong> perder cordura</strong>. Si te quedas sin puntos, tendrás que hacer una <strong>visita al Sanatorio</strong> (localización del juego) para recuperar algo de cordura con un "tratamiento express" muy agradable. Como es lógico, no se puede ganar el juego o pasar las pruebas estando loco (del todo). </li>
+               </ul>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="evento">
+               <h3>El evento</h3>
+               <ul class="fa-ul">
+                  <li class="rules-list"> <i class="fa-li fa fa-check-circle-o"></i> La <strong>Zona de Bienvenida abrirá a las 20:00 y hasta las 22:30</strong>, donde asistiréis para recibir el <strong>Diario de Investigador</strong> (entrada de uso durante el juego) y una prenda identificativa de Jugador. Se explicarán las reglas del juego. </li>
+                  <li class="rules-list"> <i class="fa-li fa fa-check-circle-o"></i> <strong>Debéis llevar el DNI </strong> o algún documento que os identifique con nombre y foto siempre encima. No valen fotocopias y se os podrá pedir en cualquier momento para comprobar que sois los dueños de vuestro Diario de Investigador. </li>
+                  <li class="rules-list"> <i class="fa-li fa fa-check-circle-o"></i> A la hora designada, los jugadores irán al punto donde comenzará una impactante <strong>escena inicial</strong>. El juego será difícil y "open world", pero no queremos que te pierdas, por lo que esta escena está diseñada para <strong>introducirte en la atmósfera</strong> del juego y que obtengas pistas de inicio suficientes como para que nadie se pase la noche corriendo sin sentido. </li>
+                  <li class="rules-list"> <i class="fa-li fa fa-check-circle-o"></i> Los jugadores encontrarán en las calles y localizaciones numerosos <strong>actores</strong> con los que <strong>interactuar </strong>y que irán desarrollando una terrorífica historia basada en los Mitos de Cthulhu, de la que <strong>tú y tus compañeros seréis protagonistas</strong>. Algunos personajes os pedirán ayuda, otros os darán pistas, e incluso habrá algunos que os chantajearán o intentarán mataros. <strong>Vosotros elegís</strong> de quién fiaros. </li>
+                  <li class="rules-list"> <i class="fa-li fa fa-check-circle-o"></i> Los eventos y pistas están <strong>conectados entre sí</strong> con el objetivo de que conozcáis toda la historia del Pueblo Maldito y encontréis la forma de acabar con la maldición. </li>
+                  <li class="rules-list"> <i class="fa-li fa fa-check-circle-o"></i> Para concluir habrá una <strong>Escena Final </strong>en la que se verá como se resolvió la historia de Pueblo Maldito, se conocerán los ganadores con premio, se hará el reparto público de los mismos y se pondrá fin al evento. </li>
+               </ul>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="normas">
+               <h3>Otras normas</h3>
+               <ul class="fa-ul">
+                  <li class="rules-list"> <i class="fa-li fa fa-check-circle-o"></i> <strong>Prohibido el juego a menores de 12 años, embarazadas y personas con problemas cardíacos</strong>. Con 16 años cumplidos, vas por libre. Con 14 años cumplidos, pedimos que un tutor o persona (+18) se responsabilice de ti y de tus actos durante el evento con una autorización por escrito y firmada de tus padres/tutor legal. Si necesitas un modelo pídenoslo por email a ven@pueblomaldito.com . Los MENORES DE 14 años, por su seguridad deberán ir OBLIGATORIAMENTE Y EN TODO MOMENTO acompañados de otra persona responsable (+18) que deberá ser también jugador. </li>
+                  <li class="rules-list"> <i class="fa-li fa fa-check-circle-o"></i> <strong>Queda prohibido </strong>estar bajo los efectos del <strong>alcohol o cualquier droga </strong>con efectos sobre la percepción o el comportamiento durante el evento. Automáticamente se expulsará del juego a cualquiera que incumpla esta norma. </li>
+                  <li class="rules-list"> <i class="fa-li fa fa-check-circle-o"></i> Están <strong>totalmente prohibidas las armas</strong>, réplicas de armas, o cualquier cosa que se parezca mínimamente a un arma, ya sea de airsoft, paintball, de plástico, gomaespuma o <i>ectoplasma</i>. Se expulsará de inmediato al portador de estas armas y se avisará a la policía (o a los cazafantasmas en el caso del ectoplasma) </li>
+                  <li class="rules-list"> <i class="fa-li fa fa-check-circle-o"></i> <strong>Sólo puedes ir a pie</strong>. No se permite el uso de vehículos, patines, bicicletas, etc. Salvo que te los proporcionemos nosotros. </li>
+                  <li class="rules-list"> <i class="fa-li fa fa-check-circle-o"></i> Se prohíbe la asistencia al evento con animales o mascotas de cualquier especie, salvo perros guía debidamente acreditados. </li>
+                  <li class="rules-list"> <i class="fa-li fa fa-check-circle-o"></i> Tú no debes interpretar un papel (sólo debes ser tú mismo), pero si hablas con los personajes saliéndote de lo que ellos están viviendo... por ejemplo "Oyeee, dame una pistaaa" prepárate para recibir reacciones desagradables o peligrosas para tu supervivencia en el juego. Se busca la <strong>INMERSIÓN TOTAL.</strong> </li>
+               </ul>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="faq">
+               <h3>Preguntas frecuentes</h3>
+               <ul class="fa-ul">
+                  <li class="rules-list"> <i class="fa-li fa fa-check-circle-o"></i> <strong>Tengo miedo de que me maten a los 5 mintuos</strong><br> La dificultad de supervivencia irá creciendo con el tiempo, y es muy probable que mueras en algún momento. El juego ES UN RETO.<br> Si te matan en la primera media hora es porque has hecho algo muy mal ¿Te dejaste acorralar? ¿No corriste de los malos? Por lo que tendrías un serio motivo para volver a la próxima edición y superarte a ti mismo. En cualquier caso, la diversión sigue esa noche en el bando malvado. ¡Te vengarás hasta el amanecer aniquilando a los que aún viven! </li>
+                  <li class="rules-list"> <i class="fa-li fa fa-check-circle-o"></i> <strong>Mis amigos no quieren venir ¿Puedo ir sólo?</strong><br> SÍ, sin problemas. Si no conoces a nadie por tu cuenta en la Zona de Bienvenida, habla con la organización para que te consigamos un equipo con gente lo más afín a ti. De hecho conocerás gente nueva aunque vayas con tu grupo de amigos. </li>
+                  <li class="rules-list"> <i class="fa-li fa fa-check-circle-o"></i> <strong>¿El juego es individual o por equipos? ¿Puedo ir junto a mi amigo/pareja todo el tiempo? ¿Me incluiréis en un grupo de desconocidos si voy solo?</strong><br> Cada uno va con quien quiere y acepta su compañía. Necesitarás un equipo y colaborar con gente para aumentar tus posibilidades de sobrevivir y destruir la maldición, pero el juego es individual, ya que cada uno de vosotros tendrá que pasar a las localizaciones o interactuar en las pruebas, no un representante por equipo.<br> Si todo tu equipo muere, tú podrías seguir jugando, juntarte con otros en tu situación o ser "adoptado" por otro grupo de jugadores. Ir por libre siempre es una opción, pero lo normal es que os juntéis varios.<br> <br> En esta edición no habrá equipos oficiales desde el inicio.<br> La única limitación que encontraréis será que a ciertas localizaciones o misiones sólo podrá acceder un nº limitado de personas de una vez. </li>
+                  <li class="rules-list"> <i class="fa-li fa fa-check-circle-o"></i> <strong>¿Habrá Seguridad... Descanso... Y baños?</strong><br> Habrá presencia de Protección Civil y Guardia Civil. Vigilarán continuamente para que estéis bien en todo momento y una ambulancia y personal disponible para atender cualquier accidente.<br><br> Todos los locales comerciales del pueblo abiertos serán considerados zona segura y podréis descansar lo que necesitéis. Pero no se permite entrar en ellos para huir de la muerte. El juego no es una carrera continua de 8 horas, váis a vuestro propio ritmo y habrá zonas y momentos con menos acción.<br><br> Locales como bares tendrán aseos disponibles para vuestro uso. </li>
+                  <li class="rules-list"> <i class="fa-li fa fa-check-circle-o"></i> <strong>¿Dónde puedo encontrar la autorización para menores de 16?</strong><br> <a href="http://www.pueblomaldito.com/autorizacion.pdf"><strong>Descárgatela en PDF.</strong></a> Debes presentarla físicamente en la zona de bienvenida del evento. </li>
+                  <li class="rules-list"> <i class="fa-li fa fa-check-circle-o"></i> <strong>Mi hermana se casa en Las Vegas el día del evento y ya he comprado mi entrada ¿Puede ir otra persona en mi lugar?</strong><br> Puedes cambiar el titular de una entrada abonando 5€ de gastos de gestión. Escríbenos a ven@pueblomaldito.com con el email + nombre completo del nuevo titular y del actual. </li>
+                  <li class="rules-list"> <i class="fa-li fa fa-check-circle-o"></i> <strong>¿Hay que llevar algo? ¿Comida? ¿Puedo llevar linterna?</strong><br> Te recomendamos que lleves linterna, así como ropa apta para mancharte y zapatillas de correr o montaña. Si llevas mochila, recomendamos algo pequeño y bien pegado a la espalda para correr y huir mejor.<br><br> Puedes llevar comida y bebida desde casa, pero habrá bares y comercios abiertos. Tenemos además el menú "Última Cena" que puedes comprar en la web con un descuento sobre el precio normal, y que se sirve en un lugar muy conveniente. </li>
+                  <li class="rules-list"> <i class="fa-li fa fa-check-circle-o"></i> <strong>¿Tengo que ir disfrazado?</strong><br> Irás con tu ropa normal, la historia del juego se desarrolla en el año actual. Si te quieres disfrazar de lo que sea, sin problema, además ¡Nos encantan los cosplayers! </li>
+                  <li class="rules-list"> <i class="fa-li fa fa-check-circle-o"></i> <strong>He jugado antes a Rol en Vivo ¿Tendremos habilidades especiales y armas?</strong><br> Pueblo Maldito NO es Rol en Vivo. Por supuesto, si tú y tus amigos queréis rolear, os llevaréis una fantástica experiencia y nuestros actores también, pero aquí el personaje es tu yo real, con tus defectos y habilidades.<br><br> En el juego hay armas cuerpo a cuerpo, de fuego y más sorpresas, pero los jugadores sólo podrán usarlas en entornos controlados. La organización os contará como usarlas en el momento adecuado.<br> Los Powerups, muy escasos, secretos y valiosos, sí tendrán un efecto especial en el juego. ¡Pero hay que ganárselos jugando! </li>
+                  <li class="rules-list"> <i class="fa-li fa fa-check-circle-o"></i> <strong>¿Te queda alguna duda?</strong><br> <a href="mailto:ven@pueblomaldito.com">ven@pueblomaldito.com</a> </li>
+               </ul>
+            </div>
+         </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="transparente" id="patrocinadores">
+    <div class="container history animation">
+      <h2 class="text-center">Patrocinadores</h2>
+      <!--div class="col-lg-4">
+        <img src="http://placehold.it/200x200">
+        </div>
+
+        <div class="col-lg-4">
+        <img src="http://placehold.it/200x200">
+        </div>
+
+        <div class="col-lg-4">
+        <img src="http://placehold.it/200x200">
+        </div-->
+      <div class="row">
+        <div class="col-sm-6 col-md-4">
+          <div class="thumbnail">
+            <a href="http://www.neatnait.com"><img heigth="200" width="200" src="assets/images/neatnait.png"></a>
+            <div class="caption">
+              <h3 class="text-center">NeatNait</h3>
+              <p class="text-justify">¡Los que hacen estas cosas tan bonitas!</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4">
+          <div class="thumbnail">
+            <a href="http://www.fuentiduenadetajo.org/fuentiduenadetajo/opencms/site/web/conoce_el_pueblo/planifica_tu_viaje/como_llegar/?comboIdiomas=spanish"><img src="assets/images/fuenti.png"></a>
+            <div class="caption">
+              <h3 class="text-center">Ayuntamiento de Fuentidueña de Tajo</h3>
+              <p class="text-justify">¡El pueblo que hay que librar de la maldición!</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4">
+          <div class="thumbnail">
+            <a href="www.videojuegosyconsolas.com"><img heigth="200" width="200" src="assets/images/videojuegosyconsolas.png"></a>
+            <div class="caption">
+              <h3 class="text-center">Videojuegos y consolas</h3>
+              <p class="text-justify">¿Te gustan los videojuegos?¡Esta es tu página!</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4">
+          <div class="thumbnail">
+            <a href="http://acroprops.com/"><img heigth="200" width="200" src="assets/images/acro.jpg"></a>
+            <div class="caption">
+              <h3 class="text-center">Acroprops</h3>
+              <p class="text-justify">¡Réplicas y Cosplay de gran calidad!</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4">
+          <div class="thumbnail">
+            <a href="http://acroprops.com/"><img heigth="200" width="200" src="assets/images/civil.png"></a>
+            <div class="caption text-center">
+              <h3 class="text-center">Protección Civil</h3>
+              <p class="text-justify">¡Para que no pase nada malo el fin de semana!</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4">
+          <div class="thumbnail">
+            <img src="http://placehold.it/200&text=tu logo aquí">
+            <div class="caption text-center">
+              <h3 class="text-center">Aquí puedes estar tu</h3>
+              <p class="text-justify">¿quieres ser patrocinador de Pueblo Maldito?</p>
+              <br> <a href="https://docs.google.com/forms/d/1TkEYGILjPStVjyPGVRiw5NYN4OFzl7aacCJ5SDlszLU/viewform?usp=send_form" class="btn btn-default" role="button">Contacta con nosotros</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dark dark-diff">
+    <div class="container history animation">
+      <p class="text-center">Contáctanos en: <a href="mailto:ven@pueblomaldito.com">ven@pueblomaldito.com</a></p>
+      <p class="mini-footer"><a href="/legales.html"> Condiciones Generales de Compra y Política de Privacidad.</a></p>
+      <p class="mini-footer">Made with love by <a href="http://neatnait.com" rel="author">NeatNait</a></p>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="comprar-entradas" tabindex="-1" role="dialog" aria-labelledby="comprar-entradasLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-body">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <iframe
+            src="http://entradium.com/entradas/3364.widget"
+            scrolling="no"
+            seamless="seamless">
+          </iframe>
+        </div>
+        <div class="modal-footer">
+          <p class="modal-footer-text">Al comprar su entrada o ser titular de ella, usted acepta en su totalidad las <a href="/legales.html"> Condiciones Generales de Compra y Política de Privacidad.</a> </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
