@@ -116,6 +116,12 @@
         /* Users */
         vm.dataDoughnut = graphManager.usersGraph();
 
+        /* Top Users */
+        var topUsersData = graphManager.topUsersGraph();
+        vm.topUsersLabels = topUsersData.labels;
+        vm.topUsersSeries = ['Trials'];
+        vm.topUsersData = topUsersData.data;
+
       });
     }
 

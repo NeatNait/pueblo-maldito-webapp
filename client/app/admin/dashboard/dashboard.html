@@ -112,7 +112,7 @@
         </div>
       </div>
     </div>
-    
+
   </div>
 
   <div class="row">
@@ -138,6 +138,23 @@
           labels="vm.awardsLabels"
           colours="vm.awardsColours"
           series="vm.awardsSeries"
+          legend="true">
+        </canvas>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row">
+
+    <div class="col-md-12">
+      <div class="panel wrapper">
+        <h4 class="font-thin m-t-none m-b text-muted">Top Users</h4>
+        <canvas id="topUsers" class="chart chart-bar"
+          data="vm.topUsersData"
+          labels="vm.topUsersLabels"
+          colours="vm.topUsersColours"
+          series="vm.topUsersSeries"
           legend="true">
         </canvas>
       </div>
