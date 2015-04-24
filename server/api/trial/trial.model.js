@@ -6,7 +6,10 @@ var mongoose = require('mongoose'),
 var TrialSchema = new Schema({
   name: String,
   info: String,
-  active: Boolean,
+  active: {
+    type: Boolean,
+    default: 'active'
+  }
   type: String,
   stats: {
     sanity: Number,

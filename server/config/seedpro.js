@@ -18,3 +18,14 @@ var admin = new User({
   gender: 'male'
 }).save();
 
+
+var admin2 = new User({
+  provider: 'local',
+  role: 'admin',
+  name: 'Empresador',
+  email: 'rjulia@empresador.com',
+  password: '123456789',
+  code: 991,
+  gender: 'male'
+}).save();
+
