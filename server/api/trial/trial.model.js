@@ -7,7 +7,7 @@ var TrialSchema = new Schema({
   name: String,
   info: String,
   active: {
-    type: Boolean,
+    type: String,
     default: 'active'
   }
   type: String,
