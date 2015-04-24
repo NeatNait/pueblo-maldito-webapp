@@ -5,6 +5,7 @@ angular.module('puebloMalditoWebappApp')
 
     $scope.trials = Trial.query();
     $scope.trial = new Trial();
+    $scope.trial.active = true;
 
     $scope.add = function(form) {
       if($scope.trial === '') {
@@ -26,6 +27,7 @@ angular.module('puebloMalditoWebappApp')
 
           $scope.submitted = false;
           $scope.trial = new Trial();
+          $scope.trial.active = true;
         });
       }
 

@@ -43,6 +43,18 @@
         </p>
       </div>
 
+      <!-- ACTIVE -->
+      <div class="form-group" ng-class="{ 'has-success': form.info.$valid && submitted,
+                                            'has-error': form.info.$invalid && submitted }">
+        <label>Active</label>
+
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" name="active" ng-model="trial.active">
+          </label>
+        </div>
+      </div>
+
       <!-- STATS: Sanity -->
       <div class="form-group" ng-class="{ 'has-success': form.sanity.$valid && submitted,
                                             'has-error': form.sanity.$invalid && submitted }">
