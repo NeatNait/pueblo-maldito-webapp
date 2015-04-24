@@ -16,7 +16,8 @@
       reloadData : reloadData,
       average : average,
       trialsGraph : trialsGraph,
-      usersGraph : usersGraph
+      usersGraph : usersGraph,
+      topUsersGraph: topUsersGraph
     };
 
     return service;
@@ -99,9 +100,7 @@
               usersData.length-usersAlive.length-usersMakedUp,
               usersMakedUp];
 
-      function alive (user) {
-        return user.stats.lives > 0;
-      }
+
 
       function makedUp() {
         var trialMakeUP = _.filter(trialsData, filterByMakeUP);
@@ -115,6 +114,39 @@
         return trial.name === '_MakeUP';
       }
 
+    }
+
+    function topUsersGraph(){
+      var usersAlive = _.filter(usersData, alive),
+          usersTrials = [],
+          usersTrialOrdered = [];
+
+      _.each(usersAlive, countTrials);
+
+      usersTrialOrdered = _.sortBy(usersTrials, 'trials');
+      usersTrialOrdered.reverse();
+      usersTrialOrdered = _.slice(usersTrialOrdered, 0, 10);
+
+
+      var userNames = _.pluck(usersTrialOrdered, 'name');
+      var userTrials = _.pluck(usersTrialOrdered, 'trials');
+
+      return {
+        data : [userTrials],
+        labels : userNames
+      };
+
+      function countTrials(user){
+         usersTrials.push({
+          name: user.name,
+          trials: user.trials.length
+        });
+      }
+
+    }
+
+    function alive (user) {
+        return user.stats.lives > 0;
     }
 
   }
