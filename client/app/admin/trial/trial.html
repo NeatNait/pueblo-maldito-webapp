@@ -28,11 +28,10 @@
       </div>
 
       <!-- TYPE -->
-      <div class="form-group" ng-class="{ 'has-success': form.info.$valid && submitted,
-                                            'has-error': form.info.$invalid && submitted }">
+      <div class="form-group" ng-class="{ 'has-success': form.type.$valid && submitted,
+                                            'has-error': form.type.$invalid && submitted }">
         <label>Type</label>
 
-        <!--input type="text" name="type" class="form-control" ng-model="trial.type"/-->
         <select name="type" class="form-control" ng-model="trial.type">
           <option value="Trial" selected>Trial</option>
           <option value="Death">Death</option>
