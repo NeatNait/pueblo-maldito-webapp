@@ -1,18 +1,36 @@
 <!--div ng-include="'components/navbar/navbar.html'"></div-->
 <div class="container profile">
 
-	<div class="col-md-12">
+	<div id="lateralBar">
 		<h2 class="profile-header">{{publicProfile.nickname}}</h2>
 		<div class="img-profile"></div>
-		<h2 ng-Show="publicProfile.stats.lives > 0" class="alive">Estás vivo</h2>
+
+		<h2 ng-Show="publicProfile.stats.lives > 0" class="alive">Sobrevives... por ahora</h2>
 		<h2 ng-Show="publicProfile.stats.lives <= 0" class="dead">Estás muerto</h2>
 
+	  <h2 class="phrase">Cordura Restante
+			<span ng-Show="publicProfile.stats.sanity > 3 " class="badge good">{{publicProfile.stats.sanity}}</span>
+			<span ng-Show="publicProfile.stats.sanity <= 3" class="badge bad">{{publicProfile.stats.sanity}}</span>
+		</h2>
 
-		  <h2 class="phrase">Cordura Restante
-		  <span ng-Show="publicProfile.stats.sanity > 3 " class="badge good">{{publicProfile.stats.sanity}}</span>
-		  <span ng-Show="publicProfile.stats.sanity <= 3" class="badge bad">{{publicProfile.stats.sanity}}</span>
-			</h2>
+		<div>
+			Has superado {{trials.length}} pruebas
+		</div>
+
+		<div>
+			Has conseguido {{awards.length}} logros
+		</div>
+	</div>
+
+	<div id="profileBody">
+
+
 		<h2 class="phrase">¿Qué has hecho en Pueblo Maldito?</h2><br/><br/>
+		<h3>Pruebas superadas</h3>
 		<profile-trials trials="trials" ></profile-trials>
+		<h3 ng-Show="awards.length > 0 ">Logros conseguidos</h3>
+		<profile-trials trials="awards"></profile-trials>
+		<h3 ng-Show="deaths.length > 0 ">Te ha matado:</h3>
+		<profile-trials trials="deaths" ></profile-trials>
 	</div>
 </div>

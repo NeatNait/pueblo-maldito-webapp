@@ -15,11 +15,27 @@
 .img-profile{
 	height:300px;
 	background: url('/assets/images/square.png');
-	 background-repeat: no-repeat;
-    background-position: 50% 20%; 
+	background-repeat: no-repeat;
+	background-position: 50% 20%;
 	background-size: contain;
 	text-align:center;
 
+}
+
+@media (min-width: 768px){
+	#lateralBar {
+  	width: 370px;
+	  position: fixed;
+	  height: 100%;
+	  overflow-y: auto;
+	  background: #222;
+	  margin-left: -15px;
+	}
+
+	#profileBody {
+		margin-left: 370px;
+		padding-left: 25px;
+	}
 }
 
 h2.profile-header {
@@ -38,6 +54,11 @@ h2.dead {
 h2.phrase {
 	font-size:18px;
 }
+
+span.badge{
+	text-align: center;
+}
+
 span.badge.good {
 	background-color: #0BD269;
 	border-radius:50%;
@@ -47,12 +68,12 @@ span.badge.good {
 
 span.badge.bad {
 	background-color: rgb(240, 69, 69);
-		border-radius:50%;
+	border-radius:50%;
 	line-height:20px;
 	font-size:18px;
 }
 
-@media (min-width: 992px) { 
+@media (min-width: 768px) {
 	h2.phrase {
 		font-size:32px;
 	}
@@ -87,10 +108,10 @@ li.list-group-item.profile-trial {
 	background-color:#111;
 	margin-bottom:50px;
 	border:none;
--webkit-box-shadow: 0px 0px 40px 5px rgba(11,210,104,1);
--moz-box-shadow: 0px 0px 40px 5px rgba(11,210,104,1);
-box-shadow: 0px 0px 40px 5px rgba(11,210,104,1);
-padding-top:15px;
+	-webkit-box-shadow: 0px 0px 40px 5px rgba(11,210,104,1);
+	-moz-box-shadow: 0px 0px 40px 5px rgba(11,210,104,1);
+	box-shadow: 0px 0px 40px 5px rgba(11,210,104,1);
+	padding-top:15px;
 }
 
 .profile-trial .text-muted {
